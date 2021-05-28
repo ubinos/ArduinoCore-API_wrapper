@@ -5,11 +5,9 @@
 #
 
 set_cache(PROJECT_TOOLCHAIN_C_STD "GNU11" STRING)
-
 set_cache(PROJECT_TOOLCHAIN_CXX_STD "GNU++14" STRING)
 set_cache(PROJECT_TOOLCHAIN_CXX_W_NO_CXX14_COMPAT FALSE BOOL)
 
 include(${PROJECT_UBINOS_DIR}/config/ubinos_nucleof207zg_baremetal.cmake)
-
-include(${CMAKE_CURRENT_LIST_DIR}/arduinocore_api.cmake)
+include(${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper/config/arduinocore_api.cmake)
 

@@ -14,6 +14,5 @@ file(GLOB_RECURSE _tmp_sources
     "${_tmp_source_dir}/*.cpp"
     "${_tmp_source_dir}/*.S"
     "${_tmp_source_dir}/*.s")
-
 set(PROJECT_APP_SOURCES ${PROJECT_APP_SOURCES} ${_tmp_sources})
 
