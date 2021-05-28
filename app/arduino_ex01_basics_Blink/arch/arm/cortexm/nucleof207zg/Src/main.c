@@ -13,9 +13,6 @@
 
 UART_HandleTypeDef DTTY_STM32_UART_HANDLE;
 
-// UART_HandleTypeDef ESP8266_UART_HANDLE;
-// esp8266at_t _g_esp8266at;
-
 /**
  * @brief  Tx Transfer completed callback
  * @param  huart: UART handle.
@@ -29,10 +26,6 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
     {
         dtty_stm32_uart_tx_callback();
     }
-    // else if (huart->Instance == ESP8266_UART)
-    // {
-    //     esp8266_uart_tx_callback();
-    // }
 }
 
 /**
@@ -48,10 +41,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     {
         dtty_stm32_uart_rx_callback();
     }
-    // else if (huart->Instance == ESP8266_UART)
-    // {
-    //     esp8266_uart_rx_callback();
-    // }
 }
 
 /**
@@ -67,10 +56,6 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
     {
         dtty_stm32_uart_err_callback();
     }
-    // else if (huart->Instance == ESP8266_UART)
-    // {
-    //     esp8266_uart_err_callback();
-    // }
 }
 
 #endif /* (UBINOS__BSP__BOARD_MODEL == UBINOS__BSP__BOARD_MODEL__NUCLEOF207ZG) */
