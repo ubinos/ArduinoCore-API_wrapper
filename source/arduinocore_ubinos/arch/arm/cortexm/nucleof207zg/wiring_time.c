@@ -15,6 +15,7 @@
 
 void delay(unsigned long ms)
 {
+#if defined(UBINOS_PRESENT)
     if (_bsp_kernel_active && !bsp_isintr())
     {
         task_sleepms(ms);
@@ -22,6 +23,9 @@ void delay(unsigned long ms)
     else{
         bsp_busywaitms(ms);
     }
+#else
+    bsp_busywaitms(ms);
+#endif /* defined(UBINOS_PRESENT) */
 }
 
 #endif /* (UBINOS__BSP__BOARD_MODEL == UBINOS__BSP__BOARD_MODEL__NUCLEOF207ZG) */
