@@ -9,4 +9,3 @@ CONFIG_NAME ?= arduino_nucleof207zg_baremetal
 
 include makefile.mk
 
-

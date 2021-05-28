@@ -1,5 +1,7 @@
 #include <ubinos/bsp.h>
 
+#if (INCLUDE__ARDUINOCORE_API == 1)
+
 #include <DttySerial.h>
 
 DttySerial SerialDtty;
@@ -49,4 +51,6 @@ size_t DttySerial::write(uint8_t c)
 
     return r;
 }
+
+#endif /* (INCLUDE__ARDUINOCORE_API == 1) */
 
