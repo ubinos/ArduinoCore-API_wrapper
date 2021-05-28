@@ -31,9 +31,9 @@ int appmain(int argc, char *argv[])
 
     for (unsigned int i = 0;; i++)
     {
+        bsp_busywaitms(1000);
         snprintf(_g_msg_buf, MSG_BUF_SIZE, "hello world ! (%u)", i);
         Serial.println(_g_msg_buf);
-        bsp_busywaitms(1000);
     }
 
     return 0;
