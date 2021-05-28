@@ -79,15 +79,16 @@ static void helloworld_mt_task2func(void * arg) {
     int r;
     (void) r;
 
-    // printf("\n");
+    printf("\n");
 
-    // initVariant();
+    initVariant();
 
-    // setup();
+    setup();
 
-    // for (unsigned int i = 0; ; i++) {
-    //     loop();
-    // }
+    for (unsigned int i = 0; ; i++) {
+        loop();
+		task_sleep(1);
+    }
 }
 
 

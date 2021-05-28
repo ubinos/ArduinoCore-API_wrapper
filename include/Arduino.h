@@ -78,7 +78,7 @@ void analogWriteResolution(int bits);
 } // extern "C"
 #endif
 
-// #include "pins_arduino.h"
+#include "pins_arduino.h"
 
 #ifdef __cplusplus
 
