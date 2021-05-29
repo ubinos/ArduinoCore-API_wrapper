@@ -117,6 +117,45 @@ void digitalWrite(pin_size_t pinNumber, PinStatus status)
     } while(1);
 }
 
+PinStatus digitalRead(pin_size_t pinNumber)
+{
+    uint32_t GPIO_Pin;
+    GPIO_TypeDef * GPIO_Port;
+    GPIO_PinState PIN_State;
+    PinStatus status = LOW;
+
+    do
+    {
+        if (pinNumber >= NUM_DIGITAL_PINS)
+        {
+            logme("pinNumber is out of range\r\n");
+            break;
+        }
+
+        GPIO_Pin = _d_pin_map[pinNumber].no;
+        GPIO_Port = _d_pin_map[pinNumber].port;
+
+        PIN_State = HAL_GPIO_ReadPin(GPIO_Port, GPIO_Pin);
+        if (PIN_State == GPIO_PIN_RESET)
+        {
+            status = LOW;
+        }
+        else if (PIN_State == GPIO_PIN_SET)
+        {
+            status = HIGH;
+        }
+        else
+        {
+            logme("PIN_State is unknown\r\n");
+            break;
+        }
+
+        break;
+    } while(1);
+
+    return status;
+}
+
 #endif /* (UBINOS__BSP__BOARD_MODEL == UBINOS__BSP__BOARD_MODEL__NUCLEOF207ZG) */
 #endif /* (INCLUDE__ARDUINOCORE_API == 1) */
 
