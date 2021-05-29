@@ -17,6 +17,9 @@ void initVariant(void)
 {
     // Digital IO
     init_wiring_digital();
+
+    // Analog IO
+    init_wiring_analog();
 }
 
 #endif /* (UBINOS__BSP__BOARD_MODEL == UBINOS__BSP__BOARD_MODEL__NUCLEOF207ZG) */
