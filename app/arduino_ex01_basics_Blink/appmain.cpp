@@ -60,12 +60,7 @@ static void rootfunc(void * arg) {
 }
 
 static void helloworld_mt_task1func(void * arg) {
-	int r;
 	unsigned int delayms;
-
-	(void) r;
-
-    printf("\n");
 
 	for (unsigned int i = 0; ; i++) {
 	    delayms = (rand() % 10 + 1) * 200;
@@ -76,11 +71,6 @@ static void helloworld_mt_task1func(void * arg) {
 }
 
 static void helloworld_mt_task2func(void * arg) {
-    int r;
-    (void) r;
-
-    printf("\n");
-
     initVariant();
 
     setup();

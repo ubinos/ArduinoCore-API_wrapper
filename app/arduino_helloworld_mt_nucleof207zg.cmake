@@ -8,6 +8,8 @@ set_cache(PROJECT_TOOLCHAIN_C_STD "GNU11" STRING)
 set_cache(PROJECT_TOOLCHAIN_CXX_STD "GNU++14" STRING)
 set_cache(PROJECT_TOOLCHAIN_CXX_W_NO_CXX14_COMPAT FALSE BOOL)
 
+set_cache(UBINOS__UBIK__TICK_TYPE "RTC" STRING)
+
 include(${PROJECT_UBINOS_DIR}/config/ubinos_nucleof207zg.cmake)
 include(${PROJECT_LIBRARY_DIR}/stm32cubef2_wrapper/config/stm32cubef2.cmake)
 include(${PROJECT_LIBRARY_DIR}/stm32cubef2_extension/config/stm32cubef2_extension.cmake)
