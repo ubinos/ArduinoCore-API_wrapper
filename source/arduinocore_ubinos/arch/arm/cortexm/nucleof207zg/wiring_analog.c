@@ -13,38 +13,26 @@
 
 #include <ubinos/bsp/arch.h>
 
-typedef struct _arduino_a_pin_t
-{
-    GPIO_TypeDef * port;
-    uint32_t no;
-    ADC_TypeDef * instance;
-    uint32_t channel;
-} arduino_a_pin_t;
-
-static arduino_a_pin_t const _a_pin_map[NUM_ANALOG_INPUTS] =
-{
-    {GPIOA, GPIO_PIN_3 , ADC3, ADC_CHANNEL_3 },
-    {GPIOC, GPIO_PIN_0 , ADC3, ADC_CHANNEL_10},
-    {GPIOC, GPIO_PIN_3 , ADC3, ADC_CHANNEL_13},
-    {GPIOF, GPIO_PIN_3 , ADC3, ADC_CHANNEL_9 },
-    {GPIOF, GPIO_PIN_5 , ADC3, ADC_CHANNEL_15},
-    {GPIOF, GPIO_PIN_10, ADC3, ADC_CHANNEL_8 },
-};
+#include "_variant.h"
 
 int init_wiring_analog(void)
 {
     GPIO_TypeDef * GPIO_Port;
 	GPIO_InitTypeDef GPIO_InitStruct;
+    arduino_a_pin_t const * a_pin;
 
-	__HAL_RCC_ADC3_CLK_ENABLE();
 	__HAL_RCC_GPIOA_CLK_ENABLE();
 	__HAL_RCC_GPIOC_CLK_ENABLE();
 	__HAL_RCC_GPIOF_CLK_ENABLE();
 
+	__HAL_RCC_ADC3_CLK_ENABLE();
+
     for (int i = 0; i < NUM_ANALOG_INPUTS; i++)
     {
-        GPIO_Port = _a_pin_map[i].port;
-        GPIO_InitStruct.Pin = _a_pin_map[i].no;
+        a_pin = &_g_a_pin_map[i];
+
+        GPIO_Port = a_pin->port;
+        GPIO_InitStruct.Pin = a_pin->no;
         GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
         GPIO_InitStruct.Pull = GPIO_NOPULL;
         HAL_GPIO_Init(GPIO_Port, &GPIO_InitStruct);
@@ -57,6 +45,7 @@ int analogRead(pin_size_t pinNumber)
 {
     ADC_HandleTypeDef AdcHandle;
     ADC_ChannelConfTypeDef sConfig;
+    arduino_a_pin_t const * a_pin;
     uint16_t uhADCxConvertedValue = 0;
 
     do
@@ -66,8 +55,9 @@ int analogRead(pin_size_t pinNumber)
             logme("pinNumber is out of range\r\n");
             break;
         }
+        a_pin = &_g_a_pin_map[pinNumber];
 
-        AdcHandle.Instance = _a_pin_map[pinNumber].instance;
+        AdcHandle.Instance = a_pin->adc_instance;
         AdcHandle.Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
         AdcHandle.Init.Resolution = ADC_RESOLUTION_10B;
         AdcHandle.Init.ScanConvMode = DISABLE;
@@ -81,28 +71,32 @@ int analogRead(pin_size_t pinNumber)
         AdcHandle.Init.DMAContinuousRequests = DISABLE;
         AdcHandle.Init.EOCSelection = DISABLE;
 
-        if (HAL_ADC_Init(&AdcHandle) != HAL_OK) {
+        if (HAL_ADC_Init(&AdcHandle) != HAL_OK)
+        {
             logme("fail at HAL_ADC_Init");
         }
 
-        sConfig.Channel = _a_pin_map[pinNumber].channel;
+        sConfig.Channel = a_pin->adc_channel;
         sConfig.Rank = 1;
         sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;
         sConfig.Offset = 0;
 
-        if (HAL_ADC_ConfigChannel(&AdcHandle, &sConfig) != HAL_OK) {
+        if (HAL_ADC_ConfigChannel(&AdcHandle, &sConfig) != HAL_OK)
+        {
             logme("fail at HAL_ADC_ConfigChannel");
         }
 
-        if (HAL_ADC_Start(&AdcHandle) != HAL_OK) {
+        if (HAL_ADC_Start(&AdcHandle) != HAL_OK)
+        {
             logme("fail at HAL_ADC_Start\r\n");
             break;
         }
 
         HAL_ADC_PollForConversion(&AdcHandle, 10);
 
-        if ((HAL_ADC_GetState(&AdcHandle) & HAL_ADC_STATE_EOC_REG) != HAL_ADC_STATE_EOC_REG) {
-            logme("fail at HAL_ADC_GetState\r\n");
+        if ((HAL_ADC_GetState(&AdcHandle) & HAL_ADC_STATE_EOC_REG) != HAL_ADC_STATE_EOC_REG)
+        {
+            logme("fail at HAL_ADC_GetState");
             break;
         }
 
