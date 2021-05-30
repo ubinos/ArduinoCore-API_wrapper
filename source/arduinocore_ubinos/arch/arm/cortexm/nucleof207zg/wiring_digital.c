@@ -183,7 +183,7 @@ void analogWrite(pin_size_t pinNumber, int value)
             logme("not support TIM");
             break;
         }
-        uhPrescalerValue = (uint32_t) (d_pin->tim_clock / (PWM_FREQUENCY * PWM_MAX_DUTY_CYCLE)) - 1;
+        uhPrescalerValue = ((uint32_t) d_pin->tim_clock / (PWM_FREQUENCY * PWM_MAX_DUTY_CYCLE)) - 1;
 
         GPIO_Port = d_pin->port;
         GPIO_InitStruct.Pin = d_pin->no;
