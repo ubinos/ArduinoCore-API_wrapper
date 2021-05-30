@@ -24,6 +24,7 @@ int init_wiring_digital(void)
     __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
 
+    __HAL_RCC_TIM1_CLK_ENABLE();
     __HAL_RCC_TIM3_CLK_ENABLE();
     __HAL_RCC_TIM4_CLK_ENABLE();
 
@@ -84,7 +85,7 @@ void digitalWrite(pin_size_t pinNumber, PinStatus status)
     {
         if (pinNumber >= NUM_DIGITAL_PINS)
         {
-            logme("pinNumber is out of range\r\n");
+            logme("pinNumber is out of range");
             break;
         }
         d_pin = &_g_d_pin_map[pinNumber];
@@ -99,7 +100,7 @@ void digitalWrite(pin_size_t pinNumber, PinStatus status)
         }
         else
         {
-            logme("status is unknown\r\n");
+            logme("status is unknown");
             break;
         }
 
@@ -124,7 +125,7 @@ PinStatus digitalRead(pin_size_t pinNumber)
     {
         if (pinNumber >= NUM_DIGITAL_PINS)
         {
-            logme("pinNumber is out of range\r\n");
+            logme("pinNumber is out of range");
             break;
         }
         d_pin = &_g_d_pin_map[pinNumber];
@@ -143,7 +144,7 @@ PinStatus digitalRead(pin_size_t pinNumber)
         }
         else
         {
-            logme("PIN_State is unknown\r\n");
+            logme("PIN_State is unknown");
             break;
         }
 
@@ -167,23 +168,22 @@ void analogWrite(pin_size_t pinNumber, int value)
     {
         if (pinNumber >= NUM_DIGITAL_PINS)
         {
-            logme("pinNumber is out of range\r\n");
+            logme("pinNumber is out of range");
             break;
         }
         d_pin = &_g_d_pin_map[pinNumber];
 
         if (!d_pin->support_pwm)
         {
-            logme("not support pwm\r\n");
+            logme("not support pwm");
             break;
         }
-        if (d_pin->tim_instance != TIM3 && d_pin->tim_instance != TIM4)
+        if (d_pin->tim_instance != TIM1 && d_pin->tim_instance != TIM3 && d_pin->tim_instance != TIM4)
         {
-            logme("not support TIM\r\n");
+            logme("not support TIM");
             break;
         }
-        /* Compute the prescaler value to have TIM3, TIM4 counter clock equal to 30 MHz */
-        uhPrescalerValue = (uint32_t) ((SystemCoreClock / 2) / (PWM_FREQUENCY * PWM_MAX_DUTY_CYCLE)) - 1;
+        uhPrescalerValue = (uint32_t) (d_pin->tim_clock / (PWM_FREQUENCY * PWM_MAX_DUTY_CYCLE)) - 1;
 
         GPIO_Port = d_pin->port;
         GPIO_InitStruct.Pin = d_pin->no;

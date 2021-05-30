@@ -52,7 +52,7 @@ int analogRead(pin_size_t pinNumber)
     {
         if (pinNumber >= NUM_ANALOG_INPUTS)
         {
-            logme("pinNumber is out of range\r\n");
+            logme("pinNumber is out of range");
             break;
         }
         a_pin = &_g_a_pin_map[pinNumber];
@@ -88,7 +88,7 @@ int analogRead(pin_size_t pinNumber)
 
         if (HAL_ADC_Start(&AdcHandle) != HAL_OK)
         {
-            logme("fail at HAL_ADC_Start\r\n");
+            logme("fail at HAL_ADC_Start");
             break;
         }
 

@@ -13,6 +13,7 @@ typedef struct _arduino_d_pin_t
     uint32_t alternate;
     TIM_TypeDef * tim_instance;
     uint32_t tim_channel;
+    uint32_t tim_clock;
 } arduino_d_pin_t;
 
 extern arduino_d_pin_t const _g_d_pin_map[NUM_DIGITAL_PINS];

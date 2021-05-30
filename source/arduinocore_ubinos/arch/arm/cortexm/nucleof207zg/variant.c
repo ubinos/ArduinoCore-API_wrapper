@@ -17,22 +17,22 @@
 
 arduino_d_pin_t const _g_d_pin_map[NUM_DIGITAL_PINS] =
 {
-    {GPIOG, GPIO_PIN_9 , 0, 0            , 0   , 0            }, // D0
-    {GPIOG, GPIO_PIN_14, 0, 0            , 0   , 0            }, // D1
-    {GPIOF, GPIO_PIN_15, 0, 0            , 0   , 0            }, // D2
-    {GPIOE, GPIO_PIN_13, 0, 0            , 0   , 0            }, // D3
-    {GPIOF, GPIO_PIN_14, 0, 0            , 0   , 0            }, // D4
-    {GPIOE, GPIO_PIN_11, 0, 0            , 0   , 0            }, // D5
-    {GPIOE, GPIO_PIN_9 , 0, 0            , 0   , 0            }, // D6
-    {GPIOF, GPIO_PIN_13, 0, 0            , 0   , 0            }, // D7
-    {GPIOF, GPIO_PIN_12, 0, 0            , 0   , 0            }, // D8
-    {GPIOD, GPIO_PIN_15, 1, GPIO_AF2_TIM4, TIM4, TIM_CHANNEL_4}, // D9
-    {GPIOD, GPIO_PIN_14, 1, GPIO_AF2_TIM4, TIM4, TIM_CHANNEL_3}, // D10
-    {GPIOA, GPIO_PIN_7 , 1, GPIO_AF2_TIM3, TIM3, TIM_CHANNEL_2}, // D11
-    {GPIOA, GPIO_PIN_6 , 1, GPIO_AF2_TIM3, TIM3, TIM_CHANNEL_1}, // D12
-    {GPIOA, GPIO_PIN_5 , 0, 0            , 0   , 0            }, // D13
-    {GPIOB, GPIO_PIN_9 , 0, GPIO_AF2_TIM4, TIM4, TIM_CHANNEL_4}, // D14
-    {GPIOB, GPIO_PIN_8 , 0, GPIO_AF2_TIM4, TIM4, TIM_CHANNEL_3}, // D15
+    {GPIOG, GPIO_PIN_9 , 0, 0            , 0   , 0            , 0            }, // D0
+    {GPIOG, GPIO_PIN_14, 0, 0            , 0   , 0            , 0            }, // D1
+    {GPIOF, GPIO_PIN_15, 0, 0            , 0   , 0            , 0            }, // D2
+    {GPIOE, GPIO_PIN_13, 1, GPIO_AF1_TIM1, TIM1, TIM_CHANNEL_3, 120000000    }, // D3  ,SystemCoreClock    , o
+    {GPIOF, GPIO_PIN_14, 0, 0            , 0   , 0            , 0            }, // D4
+    {GPIOE, GPIO_PIN_11, 1, GPIO_AF1_TIM1, TIM1, TIM_CHANNEL_2, 120000000    }, // D5  ,SystemCoreClock    , o
+    {GPIOE, GPIO_PIN_9 , 1, GPIO_AF1_TIM1, TIM1, TIM_CHANNEL_1, 120000000    }, // D6  ,SystemCoreClock    , o
+    {GPIOF, GPIO_PIN_13, 0, 0            , 0   , 0            , 0            }, // D7
+    {GPIOF, GPIO_PIN_12, 0, 0            , 0   , 0            , 0            }, // D8
+    {GPIOD, GPIO_PIN_15, 1, GPIO_AF2_TIM4, TIM4, TIM_CHANNEL_4, 120000000 / 2}, // D9  ,SystemCoreClock / 2, o
+    {GPIOD, GPIO_PIN_14, 1, GPIO_AF2_TIM4, TIM4, TIM_CHANNEL_3, 120000000 / 2}, // D10 ,SystemCoreClock / 2, o
+    {GPIOA, GPIO_PIN_7 , 1, GPIO_AF2_TIM3, TIM3, TIM_CHANNEL_2, 120000000 / 2}, // D11 ,SystemCoreClock / 2, o
+    {GPIOA, GPIO_PIN_6 , 0, GPIO_AF2_TIM3, TIM3, TIM_CHANNEL_1, 120000000 / 2}, // D12 ,SystemCoreClock / 2
+    {GPIOA, GPIO_PIN_5 , 0, 0            , 0   , 0            , 0            }, // D13
+    {GPIOB, GPIO_PIN_9 , 0, GPIO_AF2_TIM4, TIM4, TIM_CHANNEL_4, 120000000 / 2}, // D14 ,SystemCoreClock / 2
+    {GPIOB, GPIO_PIN_8 , 0, GPIO_AF2_TIM4, TIM4, TIM_CHANNEL_3, 120000000 / 2}, // D15 ,SystemCoreClock / 2
 };
 
 arduino_a_pin_t const _g_a_pin_map[NUM_ANALOG_INPUTS] =
