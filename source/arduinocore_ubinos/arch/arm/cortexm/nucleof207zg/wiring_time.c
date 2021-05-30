@@ -28,6 +28,11 @@ void delay(unsigned long ms)
 #endif /* defined(UBINOS_PRESENT) */
 }
 
+unsigned long millis(void)
+{
+  return (unsigned long) ubik_tickcouttotimems(ubik_gettickcount());
+}
+
 #endif /* (UBINOS__BSP__BOARD_MODEL == UBINOS__BSP__BOARD_MODEL__NUCLEOF207ZG) */
 #endif /* (INCLUDE__ARDUINOCORE_API == 1) */
 
