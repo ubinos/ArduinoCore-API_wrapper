@@ -4,6 +4,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# {ubinos_config_type: [buildable, cmake, app]}
+
 set_cache(PROJECT_TOOLCHAIN_C_STD "GNU11" STRING)
 set_cache(PROJECT_TOOLCHAIN_CXX_STD "GNU++14" STRING)
 set_cache(PROJECT_TOOLCHAIN_CXX_W_NO_CXX14_COMPAT FALSE BOOL)
