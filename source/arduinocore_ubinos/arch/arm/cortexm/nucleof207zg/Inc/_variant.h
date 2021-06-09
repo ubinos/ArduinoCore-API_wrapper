@@ -32,23 +32,27 @@ extern arduino_a_pin_t const _g_a_pin_map[NUM_ANALOG_INPUTS];
 
 int init_wiring_analog(void);
 
-// #define TIMER_TONE                  TIM6
-// #define TIMER_TONE_CLOCK            (120000000 / 2)
-// #define TIMER_TONE_CLK_ENABLE()     __HAL_RCC_TIM6_CLK_ENABLE()
-// #define TIMER_TONE_IRQn             TIM6_DAC_IRQn
-// #define TIMER_TONE_IRQHandler       TIM6_DAC_IRQHandler
-// #define TIMER_TONE_COUNT_MAX        0xFFFF
-// //#define TIMER_TONE_PULSE            1024
-// #define TIMER_TONE_CHANNEL          TIM_CHANNEL_1
-
 #define TIMER_TONE                  TIM3
 #define TIMER_TONE_CLOCK            (120000000 / 2)
 #define TIMER_TONE_CLK_ENABLE()     __HAL_RCC_TIM3_CLK_ENABLE()
 #define TIMER_TONE_IRQn             TIM3_IRQn
 #define TIMER_TONE_IRQHandler       TIM3_IRQHandler
-#define TIMER_TONE_COUNT_MAX        0xFFFF
-// #define TIMER_TONE_PULSE            1000
 #define TIMER_TONE_CHANNEL          TIM_CHANNEL_1
+#define TIMER_TONE_CHANNEL_IT       TIM_IT_CC1
+#define TIMER_TONE_COUNT_MAX        0xFFFF
+#define TIMER_TONE_BASE_CLOCK       0x9C40 /* 40 kHz */
+
+typedef struct _arduino_tone_t
+{
+    TIM_HandleTypeDef timer_handle;
+    uint8_t pin;
+    PinStatus pin_status;
+    uint32_t frequency_steps;
+    uint32_t duration_steps;
+    uint8_t zero_duration;
+} arduino_tone_t;
+
+extern arduino_tone_t _arduino_tone;
 
 #endif /* _VARIANT_H_ */
 

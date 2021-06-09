@@ -28,7 +28,7 @@ arduino_d_pin_t const _g_d_pin_map[NUM_DIGITAL_PINS] =
     {GPIOF, GPIO_PIN_12, 0, 0            , 0   , 0            , 0            }, // D8
     {GPIOD, GPIO_PIN_15, 1, GPIO_AF2_TIM4, TIM4, TIM_CHANNEL_4, 120000000 / 2}, // D9  ,SystemCoreClock / 2, o
     {GPIOD, GPIO_PIN_14, 1, GPIO_AF2_TIM4, TIM4, TIM_CHANNEL_3, 120000000 / 2}, // D10 ,SystemCoreClock / 2, o
-    {GPIOA, GPIO_PIN_7 , 1, GPIO_AF2_TIM3, TIM3, TIM_CHANNEL_2, 120000000 / 2}, // D11 ,SystemCoreClock / 2, o
+    {GPIOA, GPIO_PIN_7 , 0, GPIO_AF2_TIM3, TIM3, TIM_CHANNEL_2, 120000000 / 2}, // D11 ,SystemCoreClock / 2, o
     {GPIOA, GPIO_PIN_6 , 0, GPIO_AF2_TIM3, TIM3, TIM_CHANNEL_1, 120000000 / 2}, // D12 ,SystemCoreClock / 2
     {GPIOA, GPIO_PIN_5 , 0, 0            , 0   , 0            , 0            }, // D13
     {GPIOB, GPIO_PIN_9 , 0, GPIO_AF2_TIM4, TIM4, TIM_CHANNEL_4, 120000000 / 2}, // D14 ,SystemCoreClock / 2
@@ -47,10 +47,10 @@ arduino_a_pin_t const _g_a_pin_map[NUM_ANALOG_INPUTS] =
 
 void initVariant(void)
 {
-    // Digital IO
+    // Init Digital IO
     init_wiring_digital();
 
-    // Analog IO
+    // Init Analog IO
     init_wiring_analog();
 }
 
