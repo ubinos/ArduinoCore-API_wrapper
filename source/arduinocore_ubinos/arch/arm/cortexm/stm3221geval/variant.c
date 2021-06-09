@@ -17,7 +17,7 @@
 
 arduino_d_pin_t const _g_d_pin_map[NUM_DIGITAL_PINS] =
 {
-    {GPIOG, GPIO_PIN_6 , 0, 0            , 0   , 0            , 0            }, // D0
+    {GPIOG, GPIO_PIN_6 , 0, 0            , 0   , 0            , 0            }, // D8
 };
 
 arduino_a_pin_t const _g_a_pin_map[NUM_ANALOG_INPUTS] =
@@ -26,10 +26,10 @@ arduino_a_pin_t const _g_a_pin_map[NUM_ANALOG_INPUTS] =
 
 void initVariant(void)
 {
-    // Digital IO
+    // Init Digital IO
     init_wiring_digital();
 
-    // Analog IO
+    // Init Analog IO
     init_wiring_analog();
 }
 
