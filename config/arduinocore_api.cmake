@@ -16,6 +16,8 @@ include_directories(${_tmp_api_dir}/api)
 
 if(UBINOS__BSP__BOARD_MODEL STREQUAL "NUCLEOF207ZG")
     include_directories(${_tmp_wrapper_dir}/include/arch/arm/cortexm/nucleof207zg)
+elseif(UBINOS__BSP__BOARD_MODEL STREQUAL "STM3221GEVAL")
+    include_directories(${_tmp_wrapper_dir}/include/arch/arm/cortexm/stm3221geval)
 else()
     message(FATAL_ERROR "Unsupported UBINOS__BSP__BOARD_MODEL")
 endif()

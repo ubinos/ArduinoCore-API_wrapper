@@ -18,6 +18,13 @@
 	@echo ""
 	@echo ""
 
+	@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+	@echo ""
+	@echo ""
+	make -f makefile.mk $@ CONFIG_DIR=../config CONFIG_NAME=arduinocore_api_stm3221geval_baremetal
+	@echo ""
+	@echo ""
+
 
 	@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 	@echo ""
