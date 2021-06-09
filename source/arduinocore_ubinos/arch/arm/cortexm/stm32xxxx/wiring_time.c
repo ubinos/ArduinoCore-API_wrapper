@@ -7,7 +7,7 @@
 #include <ubinos.h>
 
 #if (INCLUDE__ARDUINOCORE_API == 1)
-#if (UBINOS__BSP__BOARD_MODEL == UBINOS__BSP__BOARD_MODEL__NUCLEOF207ZG)
+#if (UBINOS__BSP__STM32_STM32XXXX == 1)
 
 #include <Arduino.h>
 
@@ -33,6 +33,6 @@ unsigned long millis(void)
   return (unsigned long) ubik_tickcouttotimems(ubik_gettickcount());
 }
 
-#endif /* (UBINOS__BSP__BOARD_MODEL == UBINOS__BSP__BOARD_MODEL__NUCLEOF207ZG) */
+#endif /* (UBINOS__BSP__STM32_STM32XXXX == 1) */
 #endif /* (INCLUDE__ARDUINOCORE_API == 1) */
 
