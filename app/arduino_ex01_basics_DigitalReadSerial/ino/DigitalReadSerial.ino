@@ -1,11 +1,3 @@
-#include <ubinos.h>
-
-#if (INCLUDE__APP__arduino_ex01_basics_DigitalReadSerial == 1)
-
-#include <Arduino.h>
-
-////
-
 /*
   DigitalReadSerial
 
@@ -35,8 +27,4 @@ void loop() {
   Serial.println(buttonState);
   delay(1);        // delay in between reads for stability
 }
-
-////
-
-#endif /* (INCLUDE__APP__arduino_ex01_basics_DigitalReadSerial == 1) */
 

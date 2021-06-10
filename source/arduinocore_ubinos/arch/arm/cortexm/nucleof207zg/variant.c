@@ -84,6 +84,8 @@ void initVariant(void)
     __HAL_RCC_TIM4_CLK_ENABLE();
 
     // for tone
+    __HAL_RCC_TIM3_CLK_ENABLE();
+
     _arduino_tone.timer_initiated = 0;
     _arduino_tone.pin_initiated = 0;
 }

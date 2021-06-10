@@ -9,7 +9,6 @@
 
 #define TIMER_TONE                  TIM3
 #define TIMER_TONE_CLOCK            (120000000 / 2)
-#define TIMER_TONE_CLK_ENABLE()     __HAL_RCC_TIM3_CLK_ENABLE()
 #define TIMER_TONE_IRQn             TIM3_IRQn
 #define TIMER_TONE_IRQHandler       TIM3_IRQHandler
 #define TIMER_TONE_CHANNEL          TIM_CHANNEL_1

@@ -1,11 +1,3 @@
-#include <ubinos.h>
-
-#if (INCLUDE__APP__arduino_ex02_digital_toneMelody == 1)
-
-#include <Arduino.h>
-
-////
-
 /*
   Melody
 
@@ -58,8 +50,4 @@ void setup() {
 void loop() {
   // no need to repeat the melody.
 }
-
-////
-
-#endif /* (INCLUDE__APP__arduino_ex02_digital_toneMelody == 1) */
 

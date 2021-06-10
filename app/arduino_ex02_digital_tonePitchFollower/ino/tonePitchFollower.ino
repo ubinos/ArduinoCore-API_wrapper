@@ -1,11 +1,3 @@
-#include <ubinos.h>
-
-#if (INCLUDE__APP__arduino_ex02_digital_tonePitchFollower == 1)
-
-#include <Arduino.h>
-
-////
-
 /*
   Pitch follower
 
@@ -48,8 +40,4 @@ void loop() {
   tone(piezoBuzzerPin, thisPitch, 10);
   delay(1);        // delay in between reads for stability
 }
-
-////
-
-#endif /* (INCLUDE__APP__arduino_ex02_digital_tonePitchFollower == 1) */
 

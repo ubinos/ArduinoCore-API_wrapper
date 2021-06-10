@@ -1,11 +1,3 @@
-#include <ubinos.h>
-
-#if (INCLUDE__APP__arduino_ex02_digital_DigitalInputPullup == 1)
-
-#include <Arduino.h>
-
-////
-
 /*
   Input Pull-up Serial
 
@@ -55,8 +47,4 @@ void loop() {
     digitalWrite(ledPin, HIGH);
   }
 }
-
-////
-
-#endif /* (INCLUDE__APP__arduino_ex02_digital_DigitalInputPullup == 1) */
 

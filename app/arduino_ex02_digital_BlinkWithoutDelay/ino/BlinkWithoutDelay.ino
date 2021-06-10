@@ -1,11 +1,3 @@
-#include <ubinos.h>
-
-#if (INCLUDE__APP__arduino_ex02_digital_BlinkWithoutDelay == 1)
-
-#include <Arduino.h>
-
-////
-
 /*
   Blink without Delay
 
@@ -77,8 +69,4 @@ void loop() {
     digitalWrite(ledPin, ledState);
   }
 }
-
-////
-
-#endif /* (INCLUDE__APP__arduino_ex02_digital_BlinkWithoutDelay == 1) */
 

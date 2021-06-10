@@ -1,11 +1,3 @@
-#include <ubinos.h>
-
-#if (INCLUDE__APP__arduino_ex02_digital_Debounce == 1)
-
-#include <Arduino.h>
-
-////
-
 /*
   Debounce
 
@@ -92,8 +84,4 @@ void loop() {
   // save the reading. Next time through the loop, it'll be the lastButtonState:
   lastButtonState = reading;
 }
-
-////
-
-#endif /* (INCLUDE__APP__arduino_ex02_digital_Debounce == 1) */
 

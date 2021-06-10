@@ -1,11 +1,3 @@
-#include <ubinos.h>
-
-#if (INCLUDE__APP__arduino_ex02_digital_StateChangeDetection == 1)
-
-#include <Arduino.h>
-
-////
-
 /*
   State change detection (edge detection)
 
@@ -84,8 +76,4 @@ void loop() {
     digitalWrite(ledPin, LOW);
   }
 }
-
-////
-
-#endif /* (INCLUDE__APP__arduino_ex02_digital_StateChangeDetection == 1) */
 

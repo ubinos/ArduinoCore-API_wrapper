@@ -1,11 +1,3 @@
-#include <ubinos.h>
-
-#if (INCLUDE__APP__arduino_ex01_basics_ReadAnalogVoltage == 1)
-
-#include <Arduino.h>
-
-////
-
 /*
   ReadAnalogVoltage
 
@@ -33,8 +25,4 @@ void loop() {
   // print out the value you read:
   Serial.println(voltage);
 }
-
-////
-
-#endif /* (INCLUDE__APP__arduino_ex01_basics_ReadAnalogVoltage == 1) */
 

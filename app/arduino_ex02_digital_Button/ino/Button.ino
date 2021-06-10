@@ -1,11 +1,3 @@
-#include <ubinos.h>
-
-#if (INCLUDE__APP__arduino_ex02_digital_Button == 1)
-
-#include <Arduino.h>
-
-////
-
 /*
   Button
 
@@ -57,8 +49,4 @@ void loop() {
     digitalWrite(ledPin, LOW);
   }
 }
-
-////
-
-#endif /* (INCLUDE__APP__arduino_ex02_digital_Button == 1) */
 

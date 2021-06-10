@@ -51,14 +51,19 @@ void tone(uint8_t pin, unsigned int frequency, unsigned long duration)
         steps = min((uint32_t) TIMER_TONE_COUNT_MAX, steps);
         _arduino_tone.frequency_steps = steps;
 
-        steps = TIMER_TONE_BASE_CLOCK / steps * duration / 1000;
-        steps = max((uint32_t) 2, steps);
+        if (duration == 0 || frequency == 0)
+        {
+            steps = 0;
+        }
+        else
+        {
+            steps = TIMER_TONE_BASE_CLOCK / steps * duration / 1000;
+            steps = max((uint32_t) 2, steps);
+        }
         _arduino_tone.duration_count = steps;
 
         if (!_arduino_tone.timer_initiated)
         {
-            TIMER_TONE_CLK_ENABLE();
-
             _arduino_tone.timer_handle.Instance = TIMER_TONE;
             _arduino_tone.timer_handle.Init.Period = TIMER_TONE_COUNT_MAX;
             _arduino_tone.timer_handle.Init.Prescaler = (TIMER_TONE_CLOCK / TIMER_TONE_BASE_CLOCK) - 1;
@@ -107,6 +112,8 @@ void noTone(uint8_t pin)
         }
         HAL_TIM_OC_Stop_IT(&_arduino_tone.timer_handle, TIMER_TONE_CHANNEL);
         HAL_TIM_OC_DeInit(&_arduino_tone.timer_handle);
+
+        NVIC_DisableIRQ(TIMER_TONE_IRQn);
 
         digitalWrite(_arduino_tone.pin, LOW);
 

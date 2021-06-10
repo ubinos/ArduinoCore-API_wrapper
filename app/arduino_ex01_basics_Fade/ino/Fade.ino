@@ -1,11 +1,3 @@
-#include <ubinos.h>
-
-#if (INCLUDE__APP__arduino_ex01_basics_Fade == 1)
-
-#include <Arduino.h>
-
-////
-
 /*
   Fade
 
@@ -46,8 +38,4 @@ void loop() {
   // wait for 30 milliseconds to see the dimming effect
   delay(30);
 }
-
-////
-
-#endif /* (INCLUDE__APP__arduino_ex01_basics_Fade == 1) */
 
