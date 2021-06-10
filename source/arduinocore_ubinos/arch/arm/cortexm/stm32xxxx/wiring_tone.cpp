@@ -28,11 +28,19 @@ void tone(uint8_t pin, unsigned int frequency, unsigned long duration)
             break;
         }
 
+        if (duration == 0 || frequency == 0)
+        {
+            noTone(pin);
+            break;
+        }
+
         if (!_arduino_tone.pin_initiated || _arduino_tone.pin != pin)
         {
             pinMode(pin, OUTPUT);
+            _arduino_tone.pin = pin;
             _arduino_tone.pin_initiated = 1;
         }
+        _arduino_tone.pin_status = LOW;
 
         if (duration == 0)
         {
@@ -43,23 +51,13 @@ void tone(uint8_t pin, unsigned int frequency, unsigned long duration)
             _arduino_tone.zero_duration = 0;
         }
 
-        _arduino_tone.pin = pin;
-        _arduino_tone.pin_status = LOW;
-
         steps = TIMER_TONE_BASE_CLOCK / (frequency * 2);
         steps = max((uint32_t) 1, steps);
         steps = min((uint32_t) TIMER_TONE_COUNT_MAX, steps);
         _arduino_tone.frequency_steps = steps;
 
-        if (duration == 0 || frequency == 0)
-        {
-            steps = 0;
-        }
-        else
-        {
-            steps = TIMER_TONE_BASE_CLOCK / steps * duration / 1000;
-            steps = max((uint32_t) 2, steps);
-        }
+        steps = TIMER_TONE_BASE_CLOCK / steps * duration / 1000;
+        steps = max((uint32_t) 2, steps);
         _arduino_tone.duration_count = steps;
 
         if (!_arduino_tone.timer_initiated)
