@@ -1,11 +1,3 @@
-#include <ubinos.h>
-
-#if (INCLUDE__APP__arduino_ex01_basics_Blink == 1)
-
-#include <Arduino.h>
-
-////
-
 /*
   Blink
 
@@ -45,8 +37,4 @@ void loop() {
   digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
   delay(1000);                       // wait for a second
 }
-
-////
-
-#endif /* (INCLUDE__APP__arduino_ex01_basics_Blink == 1) */
 

@@ -1,11 +1,3 @@
-#include <ubinos.h>
-
-#if (INCLUDE__APP__arduino_ex01_basics_AnalogReadSerial == 1)
-
-#include <Arduino.h>
-
-////
-
 /*
   AnalogReadSerial
 
@@ -32,8 +24,3 @@ void loop() {
   Serial.println(sensorValue);
   delay(1);        // delay in between reads for stability
 }
-
-////
-
-#endif /* (INCLUDE__APP__arduino_ex01_basics_AnalogReadSerial == 1) */
-
