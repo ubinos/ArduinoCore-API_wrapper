@@ -53,7 +53,7 @@ void tone(uint8_t pin, unsigned int frequency, unsigned long duration)
 
         steps = TIMER_TONE_BASE_CLOCK / steps * duration / 1000;
         steps = max((uint32_t) 2, steps);
-        _arduino_tone.duration_steps = steps;
+        _arduino_tone.duration_count = steps;
 
         if (!_arduino_tone.timer_initiated)
         {
@@ -132,9 +132,9 @@ void TIMER_TONE_IRQHandler(void)
     uhNextCh1 = (uhCount + _arduino_tone.frequency_steps) % TIMER_TONE_COUNT_MAX;
     __HAL_TIM_SET_COMPARE(&_arduino_tone.timer_handle, TIMER_TONE_CHANNEL, (uhNextCh1));
 
-    if(_arduino_tone.zero_duration || _arduino_tone.duration_steps > 0)
+    if(_arduino_tone.zero_duration || _arduino_tone.duration_count > 0)
     {
-        _arduino_tone.duration_steps--;
+        _arduino_tone.duration_count--;
 
         if (_arduino_tone.pin_status == HIGH)
         {

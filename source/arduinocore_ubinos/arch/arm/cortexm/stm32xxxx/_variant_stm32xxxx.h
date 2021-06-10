@@ -36,7 +36,7 @@ typedef struct _arduino_tone_t
     uint8_t pin_initiated;
 
     uint32_t frequency_steps;
-    uint32_t duration_steps;
+    uint32_t duration_count;
     uint8_t zero_duration;
 } arduino_tone_t;
 
