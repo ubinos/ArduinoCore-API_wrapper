@@ -28,7 +28,7 @@ arduino_d_pin_t const _g_d_pin_map[NUM_DIGITAL_PINS] =
     {GPIOF, GPIO_PIN_12, 0, 0            , 0   , 0            , 0            }, // D8
     {GPIOD, GPIO_PIN_15, 1, GPIO_AF2_TIM4, TIM4, TIM_CHANNEL_4, 120000000 / 2}, // D9  ,SystemCoreClock / 2, o
     {GPIOD, GPIO_PIN_14, 1, GPIO_AF2_TIM4, TIM4, TIM_CHANNEL_3, 120000000 / 2}, // D10 ,SystemCoreClock / 2, o
-    {GPIOA, GPIO_PIN_7 , 0, GPIO_AF2_TIM3, TIM3, TIM_CHANNEL_2, 120000000 / 2}, // D11 ,SystemCoreClock / 2, o
+    {GPIOA, GPIO_PIN_7 , 0, GPIO_AF2_TIM3, TIM3, TIM_CHANNEL_2, 120000000 / 2}, // D11 ,SystemCoreClock / 2
     {GPIOA, GPIO_PIN_6 , 0, GPIO_AF2_TIM3, TIM3, TIM_CHANNEL_1, 120000000 / 2}, // D12 ,SystemCoreClock / 2
     {GPIOA, GPIO_PIN_5 , 0, 0            , 0   , 0            , 0            }, // D13
     {GPIOB, GPIO_PIN_9 , 0, GPIO_AF2_TIM4, TIM4, TIM_CHANNEL_4, 120000000 / 2}, // D14 ,SystemCoreClock / 2
@@ -45,13 +45,47 @@ arduino_a_pin_t const _g_a_pin_map[NUM_ANALOG_INPUTS] =
     {GPIOF, GPIO_PIN_10, ADC3, ADC_CHANNEL_8 }, // A5
 };
 
+arduino_tone_t _arduino_tone;
+
 void initVariant(void)
 {
-    // Init Digital IO
-    init_wiring_digital();
+    GPIO_TypeDef * GPIO_Port;
+	GPIO_InitTypeDef GPIO_InitStruct;
+    arduino_a_pin_t const * a_pin;
 
-    // Init Analog IO
-    init_wiring_analog();
+    // for digital io
+    __HAL_RCC_GPIOG_CLK_ENABLE();
+    __HAL_RCC_GPIOF_CLK_ENABLE();
+    __HAL_RCC_GPIOE_CLK_ENABLE();
+    __HAL_RCC_GPIOD_CLK_ENABLE();
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOB_CLK_ENABLE();
+
+    // for analog in
+	__HAL_RCC_GPIOA_CLK_ENABLE();
+	__HAL_RCC_GPIOC_CLK_ENABLE();
+	__HAL_RCC_GPIOF_CLK_ENABLE();
+
+	__HAL_RCC_ADC3_CLK_ENABLE();
+
+    for (int i = 0; i < NUM_ANALOG_INPUTS; i++)
+    {
+        a_pin = &_g_a_pin_map[i];
+
+        GPIO_Port = a_pin->port;
+        GPIO_InitStruct.Pin = a_pin->no;
+        GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+        GPIO_InitStruct.Pull = GPIO_NOPULL;
+        HAL_GPIO_Init(GPIO_Port, &GPIO_InitStruct);
+    }
+
+    // for analog out (pwm)
+    __HAL_RCC_TIM1_CLK_ENABLE();
+    __HAL_RCC_TIM4_CLK_ENABLE();
+
+    // for tone
+    _arduino_tone.timer_initiated = 0;
+    _arduino_tone.pin_initiated = 0;
 }
 
 #endif /* (UBINOS__BSP__BOARD_MODEL == UBINOS__BSP__BOARD_MODEL__NUCLEOF207ZG) */

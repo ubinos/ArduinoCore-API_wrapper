@@ -1,7 +1,7 @@
 #ifndef VARIANT_H_
 #define VARIANT_H_
 
-#define NUM_DIGITAL_PINS            1
+#define NUM_DIGITAL_PINS            2
 
 #define NUM_ANALOG_INPUTS           0
 

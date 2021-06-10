@@ -18,19 +18,27 @@
 arduino_d_pin_t const _g_d_pin_map[NUM_DIGITAL_PINS] =
 {
     {GPIOG, GPIO_PIN_6 , 0, 0            , 0   , 0            , 0            }, // D8
+    {GPIOG, GPIO_PIN_8 , 0, 0            , 0   , 0            , 0            }, // D9
 };
 
 arduino_a_pin_t const _g_a_pin_map[NUM_ANALOG_INPUTS] =
 {
 };
 
+arduino_tone_t _arduino_tone;
+
 void initVariant(void)
 {
-    // Init Digital IO
-    init_wiring_digital();
+    // for digital io
+    __HAL_RCC_GPIOG_CLK_ENABLE();
 
-    // Init Analog IO
-    init_wiring_analog();
+    // for analog in
+
+    // for analog out (pwm)
+
+    // for tone
+    _arduino_tone.timer_initiated = 0;
+    _arduino_tone.pin_initiated = 0;
 }
 
 #endif /* (UBINOS__BSP__BOARD_MODEL == UBINOS__BSP__BOARD_MODEL__STM3221GEVAL) */

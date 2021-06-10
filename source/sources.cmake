@@ -16,6 +16,7 @@ if(INCLUDE__ARDUINOCORE_API)
         "${_tmp_source_dir}/*.s")
     set(PROJECT_SOURCES ${PROJECT_SOURCES} ${_tmp_sources})
 
+    set(PROJECT_SOURCES ${PROJECT_SOURCES} ${_tmp_api_dir}/api/Common.cpp)
     set(PROJECT_SOURCES ${PROJECT_SOURCES} ${_tmp_api_dir}/api/Stream.cpp)
     set(PROJECT_SOURCES ${PROJECT_SOURCES} ${_tmp_api_dir}/api/Print.cpp)
 

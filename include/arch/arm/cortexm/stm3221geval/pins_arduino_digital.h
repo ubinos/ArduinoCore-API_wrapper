@@ -4,7 +4,7 @@
 #include "variant.h"
 
 enum {
-  D9,
+  D8, D9,
 };
 
 

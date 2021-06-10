@@ -15,11 +15,10 @@
 
 #include "_variant.h"
 
-arduino_tone_t _arduino_tone;
-
 void tone(uint8_t pin, unsigned int frequency, unsigned long duration)
 {
     TIM_OC_InitTypeDef sConfig;
+    uint32_t steps;
 
     do
     {
@@ -29,7 +28,11 @@ void tone(uint8_t pin, unsigned int frequency, unsigned long duration)
             break;
         }
 
-        pinMode(pin, OUTPUT);
+        if (!_arduino_tone.pin_initiated || _arduino_tone.pin != pin)
+        {
+            pinMode(pin, OUTPUT);
+            _arduino_tone.pin_initiated = 1;
+        }
 
         if (duration == 0)
         {
@@ -42,40 +45,51 @@ void tone(uint8_t pin, unsigned int frequency, unsigned long duration)
 
         _arduino_tone.pin = pin;
         _arduino_tone.pin_status = LOW;
-        _arduino_tone.frequency_steps = TIMER_TONE_BASE_CLOCK / (frequency * 2);
-        _arduino_tone.duration_steps = TIMER_TONE_BASE_CLOCK / _arduino_tone.frequency_steps * duration / 1000;
 
-        TIMER_TONE_CLK_ENABLE();
+        steps = TIMER_TONE_BASE_CLOCK / (frequency * 2);
+        steps = max((uint32_t) 1, steps);
+        steps = min((uint32_t) TIMER_TONE_COUNT_MAX, steps);
+        _arduino_tone.frequency_steps = steps;
 
-        _arduino_tone.timer_handle.Instance = TIMER_TONE;
+        steps = TIMER_TONE_BASE_CLOCK / steps * duration / 1000;
+        steps = max((uint32_t) 2, steps);
+        _arduino_tone.duration_steps = steps;
 
-        _arduino_tone.timer_handle.Init.Period = TIMER_TONE_COUNT_MAX;
-        _arduino_tone.timer_handle.Init.Prescaler = (TIMER_TONE_CLOCK / TIMER_TONE_BASE_CLOCK) - 1;
-        _arduino_tone.timer_handle.Init.ClockDivision = 0;
-        _arduino_tone.timer_handle.Init.CounterMode = TIM_COUNTERMODE_UP;
-        _arduino_tone.timer_handle.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-        if (HAL_TIM_OC_Init(&_arduino_tone.timer_handle) != HAL_OK)
+        if (!_arduino_tone.timer_initiated)
         {
-            logme("fail at HAL_TIM_OC_Init");
-            break;
-        }
+            TIMER_TONE_CLK_ENABLE();
 
-        sConfig.OCMode = TIM_OCMODE_TIMING;
-        sConfig.Pulse = _arduino_tone.frequency_steps;
-        sConfig.OCPolarity = TIM_OCPOLARITY_LOW;
-        if (HAL_TIM_OC_ConfigChannel(&_arduino_tone.timer_handle, &sConfig, TIMER_TONE_CHANNEL) != HAL_OK)
-        {
-            logme("fail at HAL_TIM_OC_ConfigChannel");
-            break;
-        }
+            _arduino_tone.timer_handle.Instance = TIMER_TONE;
+            _arduino_tone.timer_handle.Init.Period = TIMER_TONE_COUNT_MAX;
+            _arduino_tone.timer_handle.Init.Prescaler = (TIMER_TONE_CLOCK / TIMER_TONE_BASE_CLOCK) - 1;
+            _arduino_tone.timer_handle.Init.ClockDivision = 0;
+            _arduino_tone.timer_handle.Init.CounterMode = TIM_COUNTERMODE_UP;
+            _arduino_tone.timer_handle.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+            if (HAL_TIM_OC_Init(&_arduino_tone.timer_handle) != HAL_OK)
+            {
+                logme("fail at HAL_TIM_OC_Init");
+                break;
+            }
 
-        NVIC_SetPriority(TIMER_TONE_IRQn, NVIC_PRIO_LOWEST);
-        NVIC_EnableIRQ(TIMER_TONE_IRQn);
+            sConfig.OCMode = TIM_OCMODE_TIMING;
+            sConfig.Pulse = _arduino_tone.frequency_steps;
+            sConfig.OCPolarity = TIM_OCPOLARITY_LOW;
+            if (HAL_TIM_OC_ConfigChannel(&_arduino_tone.timer_handle, &sConfig, TIMER_TONE_CHANNEL) != HAL_OK)
+            {
+                logme("fail at HAL_TIM_OC_ConfigChannel");
+                break;
+            }
 
-        if (HAL_TIM_OC_Start_IT(&_arduino_tone.timer_handle, TIMER_TONE_CHANNEL) != HAL_OK)
-        {
-            logme("fail at HAL_TIM_OC_Start_IT");
-            break;
+            NVIC_SetPriority(TIMER_TONE_IRQn, NVIC_PRIO_LOWEST);
+            NVIC_EnableIRQ(TIMER_TONE_IRQn);
+
+            if (HAL_TIM_OC_Start_IT(&_arduino_tone.timer_handle, TIMER_TONE_CHANNEL) != HAL_OK)
+            {
+                logme("fail at HAL_TIM_OC_Start_IT");
+                break;
+            }
+
+            _arduino_tone.timer_initiated = 1;
         }
 
         break;
@@ -96,6 +110,9 @@ void noTone(uint8_t pin)
 
         digitalWrite(_arduino_tone.pin, LOW);
 
+        _arduino_tone.timer_initiated = 0;
+        _arduino_tone.pin_initiated = 0;
+
         break;
     } while(1);
 }
@@ -111,34 +128,32 @@ void TIMER_TONE_IRQHandler(void)
 
     __HAL_TIM_CLEAR_IT(&_arduino_tone.timer_handle, TIMER_TONE_CHANNEL_IT);
 
-    if (_arduino_tone.zero_duration || _arduino_tone.duration_steps > 0)
+    uhCount = __HAL_TIM_GET_COUNTER(&_arduino_tone.timer_handle);
+    uhNextCh1 = (uhCount + _arduino_tone.frequency_steps) % TIMER_TONE_COUNT_MAX;
+    __HAL_TIM_SET_COMPARE(&_arduino_tone.timer_handle, TIMER_TONE_CHANNEL, (uhNextCh1));
+
+    if(_arduino_tone.zero_duration || _arduino_tone.duration_steps > 0)
     {
         _arduino_tone.duration_steps--;
 
-        uhCount = __HAL_TIM_GET_COUNTER(&_arduino_tone.timer_handle);
-
-        uhNextCh1 = (uhCount + _arduino_tone.frequency_steps) % TIMER_TONE_COUNT_MAX;
-
-        __HAL_TIM_SET_COMPARE(&_arduino_tone.timer_handle, TIMER_TONE_CHANNEL, (uhNextCh1));
-
-        if (_arduino_tone.pin_status == LOW)
-        {
-            _arduino_tone.pin_status = HIGH;
-        }
-        else
+        if (_arduino_tone.pin_status == HIGH)
         {
             _arduino_tone.pin_status = LOW;
         }
+        else
+        {
+            _arduino_tone.pin_status = HIGH;
+        }
+        digitalWrite(_arduino_tone.pin, _arduino_tone.pin_status);
     }
     else
     {
-        HAL_TIM_OC_Stop_IT(&_arduino_tone.timer_handle, TIMER_TONE_CHANNEL);
-        HAL_TIM_OC_DeInit(&_arduino_tone.timer_handle);
-
-        _arduino_tone.pin_status = LOW;
+        if (_arduino_tone.pin_status == HIGH)
+        {
+            _arduino_tone.pin_status = LOW;
+            digitalWrite(_arduino_tone.pin, _arduino_tone.pin_status);
+        }
     }
-
-    digitalWrite(_arduino_tone.pin, _arduino_tone.pin_status);
 }
 
 #ifdef	__cplusplus
