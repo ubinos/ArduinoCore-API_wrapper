@@ -1,8 +1,16 @@
+/*
+ * Copyright (c) 2021 Sung Ho Park and CSOS
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 #include <ubinos/bsp.h>
 
 #if (INCLUDE__ARDUINOCORE_API == 1)
 
 #include <DttySerial.h>
+
+using namespace arduino;
 
 DttySerial SerialDtty;
 

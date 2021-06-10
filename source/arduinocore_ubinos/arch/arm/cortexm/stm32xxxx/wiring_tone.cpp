@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Sung Ho Park and CSOS
+ * Copyright (c) 2021 Sung Ho Park and CSOS
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -30,7 +30,10 @@ void tone(uint8_t pin, unsigned int frequency, unsigned long duration)
 
         if (duration == 0 || frequency == 0)
         {
-            noTone(pin);
+            if (_arduino_tone.timer_initiated)
+            {
+                noTone(pin);
+            }
             break;
         }
 
@@ -108,6 +111,7 @@ void noTone(uint8_t pin)
             logme("pin is out of range");
             break;
         }
+
         HAL_TIM_OC_Stop_IT(&_arduino_tone.timer_handle, TIMER_TONE_CHANNEL);
         HAL_TIM_OC_DeInit(&_arduino_tone.timer_handle);
 

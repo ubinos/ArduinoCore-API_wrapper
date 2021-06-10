@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2021 Sung Ho Park and CSOS
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 #ifndef _VARIANT_H_
 #define _VARIANT_H_
 

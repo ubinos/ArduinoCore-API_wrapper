@@ -1,7 +1,15 @@
+/*
+ * Copyright (c) 2021 Sung Ho Park and CSOS
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 #ifndef DTTYSERIAL_H_
 #define DTTYSERIAL_H_
 
 #include <Stream.h>
+
+namespace arduino {
 
 class DttySerial : public Stream
 {
@@ -27,7 +35,9 @@ public:
     virtual size_t write(uint8_t);
 };
 
-extern DttySerial SerialDtty;
+}
+
+extern arduino::DttySerial SerialDtty;
 
 #endif /* DTTYSERIAL_H_ */
 
