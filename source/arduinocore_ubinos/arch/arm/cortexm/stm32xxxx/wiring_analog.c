@@ -29,6 +29,9 @@ int analogRead(pin_size_t pinNumber)
             logme("pinNumber is out of range");
             break;
         }
+
+        memset(&AdcHandle, 0, sizeof(ADC_HandleTypeDef));
+
         a_pin = &_g_a_pin_map[pinNumber];
 
         AdcHandle.Instance = a_pin->adc_instance;
@@ -48,6 +51,7 @@ int analogRead(pin_size_t pinNumber)
         if (HAL_ADC_Init(&AdcHandle) != HAL_OK)
         {
             logme("fail at HAL_ADC_Init");
+            break;
         }
 
         sConfig.Channel = a_pin->adc_channel;
@@ -58,6 +62,7 @@ int analogRead(pin_size_t pinNumber)
         if (HAL_ADC_ConfigChannel(&AdcHandle, &sConfig) != HAL_OK)
         {
             logme("fail at HAL_ADC_ConfigChannel");
+            break;
         }
 
         if (HAL_ADC_Start(&AdcHandle) != HAL_OK)

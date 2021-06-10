@@ -8,6 +8,10 @@ set(INCLUDE__ARDUINOCORE_API TRUE)
 
 set_cache_default(ARDUINOCORE_API__BASE_DIR "${PROJECT_LIBRARY_DIR}/arduinocore_api" STRING "arduinocore_api project base dir")
 
+set_cache_default(ARDUINOCORE_API__INCLUDE_TENSORFLOWLITE FALSE BOOL "Include arduino_tenworflowlite")
+
+####
+
 get_filename_component(_tmp_api_dir "${ARDUINOCORE_API__BASE_DIR}" ABSOLUTE)
 get_filename_component(_tmp_wrapper_dir "${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper" ABSOLUTE)
 
