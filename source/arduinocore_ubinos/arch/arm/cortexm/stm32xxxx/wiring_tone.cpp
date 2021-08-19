@@ -112,10 +112,13 @@ void noTone(uint8_t pin)
             break;
         }
 
-        HAL_TIM_OC_Stop_IT(&_arduino_tone.timer_handle, TIMER_TONE_CHANNEL);
-        HAL_TIM_OC_DeInit(&_arduino_tone.timer_handle);
+        if (_arduino_tone.timer_initiated)
+        {
+            HAL_TIM_OC_Stop_IT(&_arduino_tone.timer_handle, TIMER_TONE_CHANNEL);
+            HAL_TIM_OC_DeInit(&_arduino_tone.timer_handle);
 
-        NVIC_DisableIRQ(TIMER_TONE_IRQn);
+            NVIC_DisableIRQ(TIMER_TONE_IRQn);
+        }
 
         digitalWrite(_arduino_tone.pin, LOW);
 
