@@ -53,6 +53,7 @@ void initVariant(void)
 	GPIO_InitTypeDef GPIO_InitStruct;
     arduino_a_pin_t const * a_pin;
 
+    ////////////////////////////////////////
     // for digital io
     __HAL_RCC_GPIOG_CLK_ENABLE();
     __HAL_RCC_GPIOF_CLK_ENABLE();
@@ -61,6 +62,7 @@ void initVariant(void)
     __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
 
+    ////////////////////////////////////////
     // for analog in
 	__HAL_RCC_GPIOA_CLK_ENABLE();
 	__HAL_RCC_GPIOC_CLK_ENABLE();
@@ -79,10 +81,12 @@ void initVariant(void)
         HAL_GPIO_Init(GPIO_Port, &GPIO_InitStruct);
     }
 
+    ////////////////////////////////////////
     // for analog out (pwm)
     __HAL_RCC_TIM1_CLK_ENABLE();
     __HAL_RCC_TIM4_CLK_ENABLE();
 
+    ////////////////////////////////////////
     // for tone
     __HAL_RCC_TIM3_CLK_ENABLE();
 

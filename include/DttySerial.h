@@ -29,10 +29,10 @@ public:
       return true;
     }
 
-    virtual int available(void);
-    virtual int read(void);
-    virtual int peek(void);
-    virtual size_t write(uint8_t);
+    int available(void);
+    int read(void);
+    int peek(void);
+    size_t write(uint8_t);
 };
 
 }
