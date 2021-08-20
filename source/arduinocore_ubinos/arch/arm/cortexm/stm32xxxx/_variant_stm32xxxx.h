@@ -50,6 +50,7 @@ typedef struct _arduino_tone_t
 extern arduino_d_pin_t const _g_d_pin_map[NUM_DIGITAL_PINS];
 extern arduino_a_pin_t const _g_a_pin_map[NUM_ANALOG_INPUTS];
 extern arduino_tone_t _arduino_tone;
+extern I2C_HandleTypeDef _arduino_wire;
 
 #endif /* _VARIANT_STM32XXXX_H_ */
 
