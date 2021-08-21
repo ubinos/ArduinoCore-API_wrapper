@@ -13,7 +13,9 @@
 
 #include <variant.h>
 
+#include "nrf_delay.h"
 #include "nrf_gpio.h"
+#include "nrf_drv_twi.h"
 
 typedef struct _arduino_d_pin_t
 {
