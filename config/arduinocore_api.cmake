@@ -10,11 +10,11 @@ set_cache_default(ARDUINOCORE_API__BASE_DIR "${PROJECT_LIBRARY_DIR}/arduinocore_
 
 set_cache_default(ARDUINOCORE_API__ADAFRUIT_SENSOR_DIR "${PROJECT_LIBRARY_DIR}/arduino_adafruit_sensor" STRING "arduino_adafruit_sensor project base dir")
 set_cache_default(ARDUINOCORE_API__ADAFRUIT_BME280_LIBRARY_DIR "${PROJECT_LIBRARY_DIR}/arduino_adafruit_bme280_library" STRING "arduino_adafruit_bme280_library project base dir")
-set_cache_default(ARDUINOCORE_API__TENSORFLOWLITE_DIR "${PROJECT_LIBRARY_DIR}/arduino_tenworflowlite" STRING "arduino_tenworflowlite project base dir")
+set_cache_default(ARDUINOCORE_API__TENSORFLOWLITE_DIR "${PROJECT_LIBRARY_DIR}/arduino_tensorflowlite" STRING "arduino_tensorflowlite project base dir")
 
 set_cache_default(ARDUINOCORE_API__INCLUDE_ADAFRUIT_SENSOR FALSE BOOL "Include arduino_adafruit_sensor")
 set_cache_default(ARDUINOCORE_API__INCLUDE_ADAFRUIT_BME280_LIBRARY FALSE BOOL "Include arduino_adafruit_bme280_library")
-set_cache_default(ARDUINOCORE_API__INCLUDE_TENSORFLOWLITE FALSE BOOL "Include arduino_tenworflowlite")
+set_cache_default(ARDUINOCORE_API__INCLUDE_TENSORFLOWLITE FALSE BOOL "Include arduino_tensorflowlite")
 
 set_cache_default(ARDUINOCORE_API__VERSION "10813" STRING "Arduino version")
 
@@ -40,3 +40,4 @@ elseif(UBINOS__BSP__BOARD_MODEL STREQUAL "NRF52840DK")
 else()
     message(FATAL_ERROR "Unsupported UBINOS__BSP__BOARD_MODEL")
 endif()
+
