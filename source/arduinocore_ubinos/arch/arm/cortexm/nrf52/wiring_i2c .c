@@ -8,6 +8,7 @@
 
 #if (INCLUDE__ARDUINOCORE_API == 1)
 #if (UBINOS__BSP__NRF52_NRF52XXX == 1)
+#if (ARDUINOCORE_API__USE_WIRE == 1)
 
 #include <Arduino.h>
 
@@ -101,7 +102,7 @@ ubi_err_t wiring_i2c_master_read(uint8_t slave_addr, uint8_t *data, uint16_t siz
     return ubi_err;
 }
 
-
+#endif /* (ARDUINOCORE_API__USE_WIRE == 1) */
 #endif /* (UBINOS__BSP__NRF52_NRF52XXX == 1) */
 #endif /* (INCLUDE__ARDUINOCORE_API == 1) */
 

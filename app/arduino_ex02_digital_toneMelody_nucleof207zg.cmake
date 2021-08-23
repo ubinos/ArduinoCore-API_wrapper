@@ -6,21 +6,16 @@
 
 # {ubinos_config_type: [buildable, cmake, app]}
 
-set_cache(PROJECT_TOOLCHAIN_C_STD "GNU11" STRING)
-set_cache(PROJECT_TOOLCHAIN_CXX_STD "GNU++14" STRING)
-set_cache(PROJECT_TOOLCHAIN_CXX_W_NO_CXX14_COMPAT FALSE BOOL)
+set(INCLUDE__APP TRUE)
+set(APP__NAME "arduino_ex02_digital_toneMelody")
 
-set_cache(UBINOS__UBIK__TICK_TYPE "RTC" STRING)
+include(${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper/config/arduinocore_api_nucleof207zg.cmake)
 
-include(${PROJECT_UBINOS_DIR}/config/ubinos_nucleof207zg.cmake)
-include(${PROJECT_LIBRARY_DIR}/stm32cubef2_wrapper/config/stm32cubef2.cmake)
-include(${PROJECT_LIBRARY_DIR}/stm32cubef2_extension/config/stm32cubef2_extension.cmake)
-include(${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper/config/arduinocore_api.cmake)
-include(${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper/app/arduino_ex02_digital_toneMelody.cmake)
-
-####
-
-get_filename_component(_tmp_source_dir "${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper/source/arduinocore_ubinos/arch/arm/cortexm/nucleof207zg" ABSOLUTE)
-
-include_directories(${_tmp_source_dir}/Inc)
+get_filename_component(_tmp_source_dir "${CMAKE_CURRENT_LIST_DIR}/${APP__NAME}" ABSOLUTE)
+file(GLOB_RECURSE _tmp_sources
+    "${_tmp_source_dir}/*.c"
+    "${_tmp_source_dir}/*.cpp"
+    "${_tmp_source_dir}/*.S"
+    "${_tmp_source_dir}/*.s")
+set(PROJECT_APP_SOURCES ${PROJECT_APP_SOURCES} ${_tmp_sources})
 

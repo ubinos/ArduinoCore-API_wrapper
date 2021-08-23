@@ -29,7 +29,7 @@ int appmain(int argc, char * argv[]) {
 
 	printf("\n\n\n");
 	printf("================================================================================\n");
-	printf("arduino_helloworld_mt (multi-tasking) (build time: %s %s)\n", __TIME__, __DATE__);
+	printf("arduino_helloworld_mt (build time: %s %s)\n", __TIME__, __DATE__);
 	printf("================================================================================\n");
     printf("\n");
 

@@ -36,7 +36,7 @@ int appmain(int argc, char * argv[]) {
 static void arduino_func(void * arg) {
 	printf("\n\n\n");
 	printf("================================================================================\n");
-	printf("Arduino ReadAnalogVoltage (build time: %s %s)\n", __TIME__, __DATE__);
+	printf("arduino_ex01_basics_ReadAnalogVoltage (build time: %s %s)\n", __TIME__, __DATE__);
 	printf("================================================================================\n");
     printf("\n");
 

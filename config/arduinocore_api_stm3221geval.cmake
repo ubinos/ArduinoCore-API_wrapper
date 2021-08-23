@@ -12,14 +12,17 @@ set_cache(PROJECT_TOOLCHAIN_CXX_W_NO_CXX14_COMPAT FALSE BOOL)
 
 set_cache(UBINOS__UBIK__TICK_TYPE "RTC" STRING)
 
+set_cache(ARDUINOCORE_API__USE_WIRE FALSE BOOL)
+
+####
+
 include(${PROJECT_UBINOS_DIR}/config/ubinos_stm3221geval.cmake)
+include(${PROJECT_LIBRARY_DIR}/seggerrtt_wrapper/config/seggerrtt.cmake)
 include(${PROJECT_LIBRARY_DIR}/stm32cubef2_wrapper/config/stm32cubef2.cmake)
 include(${PROJECT_LIBRARY_DIR}/stm32cubef2_extension/config/stm32cubef2_extension.cmake)
 include(${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper/config/arduinocore_api.cmake)
 
-####
-
-get_filename_component(_tmp_source_dir "${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper/source/arduinocore_ubinos/arch/arm/cortexm/stm3221geval" ABSOLUTE)
-
+string(TOLOWER ${UBINOS__BSP__BOARD_MODEL} _tmp_board_model)
+get_filename_component(_tmp_source_dir "${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper/source/arduinocore_ubinos/arch/arm/cortexm/${_tmp_board_model}" ABSOLUTE)
 include_directories(${_tmp_source_dir}/Inc)
 

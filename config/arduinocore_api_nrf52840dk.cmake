@@ -21,19 +21,18 @@ set_cache(NRF5SDK__DTTY_NRF_UART_ENABLE TRUE BOOL)
 set_cache(NRF5SDK__UART_ENABLED TRUE BOOL)
 set_cache(NRF5SDK__NRFX_UARTE0_ENABLED TRUE BOOL)
 
-# set_cache(UBINOS__BSP__DEBUG_SERVER_SERIAL "59300655" STRING) # arduino nano
-# set_cache(UBINOS__BSP__DEBUG_SERVER_SERIAL "683755679" STRING) # ubid0200
-# set_cache(UBINOS__BSP__DEBUG_SERVER_PORT "2331" STRING)
+set_cache(NRF5SDK__TWI_ENABLED TRUE BOOL)
+
+####
 
 include(${PROJECT_UBINOS_DIR}/config/ubinos_nrf52840dk.cmake)
+include(${PROJECT_LIBRARY_DIR}/seggerrtt_wrapper/config/seggerrtt.cmake)
 include(${PROJECT_LIBRARY_DIR}/nrf5sdk_wrapper/config/nrf5sdk.cmake)
 include(${PROJECT_LIBRARY_DIR}/nrf5sdk_extension/config/nrf5sdk_extension.cmake)
 include(${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper/config/arduinocore_api.cmake)
 
-####
-
-get_filename_component(_tmp_source_dir "${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper/source/arduinocore_ubinos/arch/arm/cortexm/nrf52840dk" ABSOLUTE)
-
+string(TOLOWER ${UBINOS__BSP__BOARD_MODEL} _tmp_board_model)
+get_filename_component(_tmp_source_dir "${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper/source/arduinocore_ubinos/arch/arm/cortexm/${_tmp_board_model}" ABSOLUTE)
 include_directories(${_tmp_source_dir})
 include_directories(${_tmp_source_dir}/blank/config)
 

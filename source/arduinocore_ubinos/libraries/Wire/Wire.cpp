@@ -7,6 +7,7 @@
 #include <ubinos.h>
 
 #if (INCLUDE__ARDUINOCORE_API == 1)
+#if (ARDUINOCORE_API__USE_WIRE == 1)
 
 #include <Wire.h>
 
@@ -212,5 +213,6 @@ inline void UbiWire::resetRxBuf(void)
     memset(rxBuf, 0, UBI_WIRE_RX_BUF_LEN);
 }
 
+#endif /* (ARDUINOCORE_API__USE_WIRE == 1) */
 #endif /* (INCLUDE__ARDUINOCORE_API == 1) */
 

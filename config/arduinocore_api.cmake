@@ -8,12 +8,16 @@ set(INCLUDE__ARDUINOCORE_API TRUE)
 
 set_cache_default(ARDUINOCORE_API__BASE_DIR "${PROJECT_LIBRARY_DIR}/arduinocore_api" STRING "arduinocore_api project base dir")
 
+set_cache_default(ARDUINOCORE_API__USE_WIRE TRUE BOOL "Use wire(i2c) api")
+
 set_cache_default(ARDUINOCORE_API__ADAFRUIT_SENSOR_DIR "${PROJECT_LIBRARY_DIR}/arduino_adafruit_sensor" STRING "arduino_adafruit_sensor project base dir")
 set_cache_default(ARDUINOCORE_API__ADAFRUIT_BME280_LIBRARY_DIR "${PROJECT_LIBRARY_DIR}/arduino_adafruit_bme280_library" STRING "arduino_adafruit_bme280_library project base dir")
+set_cache_default(ARDUINOCORE_API__LSM9DS1_DIR "${PROJECT_LIBRARY_DIR}/arduino_lsm9ds1" STRING "arduino_lsm9ds1 project base dir")
 set_cache_default(ARDUINOCORE_API__TENSORFLOWLITE_DIR "${PROJECT_LIBRARY_DIR}/arduino_tensorflowlite" STRING "arduino_tensorflowlite project base dir")
 
 set_cache_default(ARDUINOCORE_API__INCLUDE_ADAFRUIT_SENSOR FALSE BOOL "Include arduino_adafruit_sensor")
 set_cache_default(ARDUINOCORE_API__INCLUDE_ADAFRUIT_BME280_LIBRARY FALSE BOOL "Include arduino_adafruit_bme280_library")
+set_cache_default(ARDUINOCORE_API__INCLUDE_LSM9DS1 FALSE BOOL "Include arduino_lsm9ds1")
 set_cache_default(ARDUINOCORE_API__INCLUDE_TENSORFLOWLITE FALSE BOOL "Include arduino_tensorflowlite")
 
 set_cache_default(ARDUINOCORE_API__VERSION "10813" STRING "Arduino version")
@@ -31,13 +35,7 @@ include_directories("${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper/include")
 include_directories("${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper/include/Wire")
 include_directories("${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper/include/SPI")
 
-if(UBINOS__BSP__BOARD_MODEL STREQUAL "NUCLEOF207ZG")
-    include_directories(${_tmp_wrapper_dir}/include/arch/arm/cortexm/nucleof207zg)
-elseif(UBINOS__BSP__BOARD_MODEL STREQUAL "STM3221GEVAL")
-    include_directories(${_tmp_wrapper_dir}/include/arch/arm/cortexm/stm3221geval)
-elseif(UBINOS__BSP__BOARD_MODEL STREQUAL "NRF52840DK")
-    include_directories(${_tmp_wrapper_dir}/include/arch/arm/cortexm/nrf52840dk)
-else()
-    message(FATAL_ERROR "Unsupported UBINOS__BSP__BOARD_MODEL")
-endif()
+string(TOLOWER ${UBINOS__BSP__BOARD_MODEL} _tmp_board_model)
+
+include_directories(${_tmp_wrapper_dir}/include/arch/arm/cortexm/${_tmp_board_model})
 

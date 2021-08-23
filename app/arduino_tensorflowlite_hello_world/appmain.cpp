@@ -36,7 +36,7 @@ int appmain(int argc, char * argv[]) {
 static void arduino_func(void * arg) {
 	printf("\n\n\n");
 	printf("================================================================================\n");
-	printf("Arduino tensorflowlite_hello_world (build time: %s %s)\n", __TIME__, __DATE__);
+	printf("arduino_tensorflowlite_hello_world (build time: %s %s)\n", __TIME__, __DATE__);
 	printf("================================================================================\n");
     printf("\n");
 
