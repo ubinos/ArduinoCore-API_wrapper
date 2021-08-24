@@ -15,7 +15,11 @@
 
 using namespace arduino;
 
+#if defined(ARDUINO_ARDUINO_NANO33BLE)
+UbiWire Wire1;
+#else
 UbiWire Wire;
+#endif
 
 void UbiWire::begin()
 {

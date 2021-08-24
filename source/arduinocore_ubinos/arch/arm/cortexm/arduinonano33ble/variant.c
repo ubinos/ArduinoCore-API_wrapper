@@ -31,6 +31,11 @@ arduino_d_pin_t const _g_d_pin_map[NUM_DIGITAL_PINS] =
     {NRF_GPIO_PIN_MAP(1, 13)}, // D11
     {NRF_GPIO_PIN_MAP(1, 14)}, // D12
     {NRF_GPIO_PIN_MAP(1, 15)}, // D13
+    {NRF_GPIO_PIN_MAP(0, 13)}, // LED_BUILTIN
+    {NRF_GPIO_PIN_MAP(1,  9)}, // LED_POWER
+    {NRF_GPIO_PIN_MAP(0, 24)}, // LED_RED
+    {NRF_GPIO_PIN_MAP(0, 16)}, // LED_GREEN
+    {NRF_GPIO_PIN_MAP(0,  6)}, // LED_BLUE
 };
 
 void initVariant(void)

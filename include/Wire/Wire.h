@@ -71,7 +71,11 @@ private:
 
 }
 
+#if defined(ARDUINO_ARDUINO_NANO33BLE)
+extern arduino::UbiWire Wire1;
+#else
 extern arduino::UbiWire Wire;
+#endif
 
 typedef arduino::UbiWire TwoWire;
 
