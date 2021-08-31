@@ -17,6 +17,7 @@ enum {
     LED_RED,
     LED_GREEN,
     LED_BLUE,
+    NUM_DIGITAL_PINS
 };
 
 enum {

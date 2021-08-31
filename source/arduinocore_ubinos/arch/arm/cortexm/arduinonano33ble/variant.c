@@ -17,20 +17,20 @@
 
 arduino_d_pin_t const _g_d_pin_map[NUM_DIGITAL_PINS] =
 {
-    {NRF_GPIO_PIN_MAP(1,  1)}, // D0
-    {NRF_GPIO_PIN_MAP(1,  2)}, // D1
-    {NRF_GPIO_PIN_MAP(1,  3)}, // D2
-    {NRF_GPIO_PIN_MAP(1,  4)}, // D3
-    {NRF_GPIO_PIN_MAP(1,  5)}, // D4
-    {NRF_GPIO_PIN_MAP(1,  6)}, // D5
-    {NRF_GPIO_PIN_MAP(1,  7)}, // D6
-    {NRF_GPIO_PIN_MAP(1,  8)}, // D7
-    {NRF_GPIO_PIN_MAP(1, 10)}, // D8
-    {NRF_GPIO_PIN_MAP(1, 11)}, // D9
-    {NRF_GPIO_PIN_MAP(1, 12)}, // D10
-    {NRF_GPIO_PIN_MAP(1, 13)}, // D11
-    {NRF_GPIO_PIN_MAP(1, 14)}, // D12
-    {NRF_GPIO_PIN_MAP(1, 15)}, // D13
+    {NRF_GPIO_PIN_MAP(1,  3)}, // D0
+    {NRF_GPIO_PIN_MAP(1, 10)}, // D1
+    {NRF_GPIO_PIN_MAP(1, 11)}, // D2
+    {NRF_GPIO_PIN_MAP(1, 12)}, // D3
+    {NRF_GPIO_PIN_MAP(1, 15)}, // D4
+    {NRF_GPIO_PIN_MAP(1, 13)}, // D5
+    {NRF_GPIO_PIN_MAP(1, 14)}, // D6
+    {NRF_GPIO_PIN_MAP(0, 23)}, // D7
+    {NRF_GPIO_PIN_MAP(0, 21)}, // D8
+    {NRF_GPIO_PIN_MAP(0, 27)}, // D9
+    {NRF_GPIO_PIN_MAP(1,  2)}, // D10
+    {NRF_GPIO_PIN_MAP(1,  1)}, // D11
+    {NRF_GPIO_PIN_MAP(1,  8)}, // D12
+    {NRF_GPIO_PIN_MAP(0, 13)}, // D13
     {NRF_GPIO_PIN_MAP(0, 13)}, // LED_BUILTIN
     {NRF_GPIO_PIN_MAP(1,  9)}, // LED_POWER
     {NRF_GPIO_PIN_MAP(0, 24)}, // LED_RED
