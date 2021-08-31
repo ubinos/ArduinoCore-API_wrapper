@@ -10,7 +10,8 @@
 #include "variant.h"
 
 enum {
-  D8, D9,
+    D8, D9,
+    NUM_DIGITAL_PINS
 };
 
 #endif /* PINS_ARDUINO_DIGITAL_H_ */

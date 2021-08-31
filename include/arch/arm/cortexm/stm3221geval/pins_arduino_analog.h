@@ -9,5 +9,9 @@
 
 #include "variant.h"
 
+enum {
+    NUM_ANALOG_INPUTS
+};
+
 #endif /* PINS_ARDUINO_ANALOG_H_ */
 

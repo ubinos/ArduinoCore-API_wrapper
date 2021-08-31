@@ -7,10 +7,6 @@
 #ifndef VARIANT_H_
 #define VARIANT_H_
 
-#define NUM_DIGITAL_PINS            16
-
-#define NUM_ANALOG_INPUTS           6
-
 #define ADC_RESOLUTION              10
 
 #define PWM_FREQUENCY               1000
