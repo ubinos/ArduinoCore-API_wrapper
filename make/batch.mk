@@ -243,12 +243,32 @@
 	@echo ""
 	make -f makefile.mk $@ CONFIG_DIR=../app CONFIG_NAME=arduino_tensorflowlite_hello_world_arduinonano33ble
 	@echo ""
+	@echo ""
+
+	@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+	@echo ""
+	@echo ""
+	make -f makefile.mk $@ CONFIG_DIR=../app CONFIG_NAME=arduino_tensorflowlite_hello_world2_nrf52840dk
+	@echo ""
+	@echo ""
+	@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+	@echo ""
+	@echo ""
+	make -f makefile.mk $@ CONFIG_DIR=../app CONFIG_NAME=arduino_tensorflowlite_hello_world2_arduinonano33ble
+	@echo ""
+	@echo ""
 
 
 	@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 	@echo ""
 	@echo ""
 	make -f makefile.mk $@ CONFIG_DIR=../app CONFIG_NAME=arduino_tensorflowlite_magic_wand_arduinonano33ble
+	@echo ""
+
+	@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+	@echo ""
+	@echo ""
+	make -f makefile.mk $@ CONFIG_DIR=../app CONFIG_NAME=arduino_tensorflowlite_magic_wand2_arduinonano33ble
 	@echo ""
 
 
