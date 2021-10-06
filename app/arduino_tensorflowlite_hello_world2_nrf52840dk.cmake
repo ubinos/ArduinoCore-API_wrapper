@@ -9,8 +9,10 @@
 set(INCLUDE__APP TRUE)
 set(APP__NAME "arduino_tensorflowlite_hello_world2")
 
-include(${PROJECT_LIBRARY_DIR}/CMSIS_5_wrapper/config/cmsis_5.cmake)
+set_cache(UBINOS__BSP__CMSIS_INCLUDE_DIR "${PROJECT_LIBRARY_DIR}/CMSIS_5/CMSIS/Core/Include" PATH)
+
 include(${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper/config/arduinocore_api_nrf52840dk.cmake)
+include(${PROJECT_LIBRARY_DIR}/CMSIS_5_wrapper/config/cmsis_5.cmake)
 include(${PROJECT_LIBRARY_DIR}/tflite-micro_wrapper/config/tflite_micro.cmake)
 
 get_filename_component(_tmp_source_dir "${CMAKE_CURRENT_LIST_DIR}/${APP__NAME}" ABSOLUTE)
