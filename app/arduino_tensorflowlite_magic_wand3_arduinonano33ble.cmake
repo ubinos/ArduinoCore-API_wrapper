@@ -13,7 +13,7 @@ set_cache(PROJECT_BUILD_TYPE "Release" STRING)
 set_cache(ARDUINOCORE_API__INCLUDE_LSM9DS1 TRUE BOOL)
 set_cache(UBINOS__BSP__CMSIS_INCLUDE_DIR "${PROJECT_LIBRARY_DIR}/CMSIS_5/CMSIS/Core/Include" PATH)
 
-include(${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper/config/arduinocore_api_arduinonano33ble_softdevice.cmake)
+include(${PROJECT_LIBRARY_DIR}/ArduinoCore-API_wrapper/config/arduinocore_api_arduinonano33ble_softdevice.cmake)
 include(${PROJECT_LIBRARY_DIR}/CMSIS_5_wrapper/config/cmsis_5.cmake)
 include(${PROJECT_LIBRARY_DIR}/tflite-micro_wrapper/config/tflite_micro.cmake)
 

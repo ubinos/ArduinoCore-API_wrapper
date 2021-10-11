@@ -6,7 +6,7 @@
 
 if(INCLUDE__ARDUINOCORE_API)
 
-    get_filename_component(_tmp_source_dir "${CMAKE_CURRENT_LIST_DIR}/arduinocore_ubinos" ABSOLUTE)
+    get_filename_component(_tmp_source_dir "${CMAKE_CURRENT_LIST_DIR}/arduinocore_api_ubinos" ABSOLUTE)
     get_filename_component(_tmp_api_dir "${ARDUINOCORE_API__BASE_DIR}" ABSOLUTE)
 
     file(GLOB_RECURSE _tmp_sources

@@ -1,2 +1,2 @@
-ArduinoCore API Wrapper
+ArduinoCore-API Wrapper
 ===============================================================================

@@ -9,7 +9,7 @@
 set(INCLUDE__APP TRUE)
 set(APP__NAME "arduino_helloworld_mt")
 
-include(${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper/config/arduinocore_api_stm3221geval.cmake)
+include(${PROJECT_LIBRARY_DIR}/ArduinoCore-API_wrapper/config/arduinocore_api_stm3221geval.cmake)
 
 get_filename_component(_tmp_source_dir "${CMAKE_CURRENT_LIST_DIR}/${APP__NAME}" ABSOLUTE)
 file(GLOB_RECURSE _tmp_sources

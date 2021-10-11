@@ -6,7 +6,7 @@
 
 set(INCLUDE__ARDUINOCORE_API TRUE)
 
-set_cache_default(ARDUINOCORE_API__BASE_DIR "${PROJECT_LIBRARY_DIR}/arduinocore_api" STRING "arduinocore_api project base dir")
+set_cache_default(ARDUINOCORE_API__BASE_DIR "${PROJECT_LIBRARY_DIR}/ArduinoCore-API" STRING "ArduinoCore-API project base dir")
 
 set_cache_default(ARDUINOCORE_API__USE_WIRE TRUE BOOL "Use wire(i2c) api")
 
@@ -27,13 +27,13 @@ set_cache_default(ARDUINOCORE_API__VERSION "10813" STRING "Arduino version")
 add_definitions("-DARDUINO=${ARDUINOCORE_API__VERSION}")
 
 get_filename_component(_tmp_api_dir "${ARDUINOCORE_API__BASE_DIR}" ABSOLUTE)
-get_filename_component(_tmp_wrapper_dir "${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper" ABSOLUTE)
+get_filename_component(_tmp_wrapper_dir "${PROJECT_LIBRARY_DIR}/ArduinoCore-API_wrapper" ABSOLUTE)
 
 include_directories(${_tmp_api_dir})
 include_directories(${_tmp_api_dir}/api)
-include_directories("${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper/include")
-include_directories("${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper/include/Wire")
-include_directories("${PROJECT_LIBRARY_DIR}/arduinocore_api_wrapper/include/SPI")
+include_directories("${PROJECT_LIBRARY_DIR}/ArduinoCore-API_wrapper/include")
+include_directories("${PROJECT_LIBRARY_DIR}/ArduinoCore-API_wrapper/include/Wire")
+include_directories("${PROJECT_LIBRARY_DIR}/ArduinoCore-API_wrapper/include/SPI")
 
 string(TOLOWER ${UBINOS__BSP__BOARD_MODEL} _tmp_board_model)
 
