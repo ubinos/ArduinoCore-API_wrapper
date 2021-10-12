@@ -8,7 +8,7 @@ set(INCLUDE__ARDUINOCORE_API TRUE)
 
 set_cache_default(ARDUINOCORE_API__BASE_DIR "${PROJECT_LIBRARY_DIR}/ArduinoCore-API" STRING "ArduinoCore-API project base dir")
 
-set_cache_default(ARDUINOCORE_API__USE_WIRE TRUE BOOL "Use wire(i2c) api")
+set_cache_default(ARDUINOCORE_API__USE_WIRE TRUE BOOL "Use Wire(I2C) API")
 
 set_cache_default(ARDUINOCORE_API__ADAFRUIT_BUSIO_DIR "${PROJECT_LIBRARY_DIR}/Adafruit_BusIO" STRING "Adafruit_BusIO project base dir")
 set_cache_default(ARDUINOCORE_API__ADAFRUIT_SENSOR_DIR "${PROJECT_LIBRARY_DIR}/Adafruit_Sensor" STRING "Adafruit_Sensor project base dir")
