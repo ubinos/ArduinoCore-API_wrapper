@@ -7,7 +7,7 @@
 #include <ubinos.h>
 
 
-#if (INCLUDE__APP__arduino_tensorflowlite_magic_wand2 == 1)
+#if (INCLUDE__APP__arduino_tensorflowlite_magic_wand == 1)
 
 
 #include <assert.h>
@@ -36,7 +36,7 @@ int appmain(int argc, char * argv[]) {
 static void arduino_func(void * arg) {
 	printf("\n\n\n");
 	printf("================================================================================\n");
-	printf("arduino_tensorflowlite_magic_wand2 (build time: %s %s)\n", __TIME__, __DATE__);
+	printf("arduino_tensorflowlite_magic_wand (build time: %s %s)\n", __TIME__, __DATE__);
 	printf("================================================================================\n");
     printf("\n");
 
@@ -48,5 +48,5 @@ static void arduino_func(void * arg) {
 }
 
 
-#endif /* (INCLUDE__APP__arduino_tensorflowlite_magic_wand2 == 1) */
+#endif /* (INCLUDE__APP__arduino_tensorflowlite_magic_wand == 1) */
 
