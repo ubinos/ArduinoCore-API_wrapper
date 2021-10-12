@@ -45,6 +45,7 @@ public:
     int read(void);
     int peek(void);
     size_t write(uint8_t);
+    size_t write(const uint8_t *buffer, size_t size);
 
 private:
     enum{

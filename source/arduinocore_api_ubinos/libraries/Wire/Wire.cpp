@@ -207,6 +207,32 @@ size_t UbiWire::write(uint8_t c)
     return written;
 }
 
+size_t UbiWire::write(const uint8_t *buffer, size_t size)
+{
+    size_t written = 0;
+
+    for (size_t i = 0; i < size; i++)
+    {
+        if (state != UBI_WIRE_STATE_TX)
+        {
+            break;
+        }
+        if (txBufIdx >= UBI_WIRE_TX_BUF_LEN)
+        {
+            break;
+        }
+        if (buffer == NULL)
+        {
+            break;
+        }
+
+        txBuf[txBufIdx++] = buffer[i];
+        written++;
+    }
+
+    return written;
+}
+
 inline void UbiWire::resetRxBuf(void)
 {
     memset(rxBuf, 0, UBI_WIRE_RX_BUF_LEN);
