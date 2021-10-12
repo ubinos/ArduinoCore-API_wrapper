@@ -60,11 +60,6 @@ uint8_t UbiWire::endTransmission(bool stopBit)
 
     do
     {
-        if (txBufIdx <= 0)
-        {
-            break;
-        }
-
         ubi_err = wiring_i2c_master_write(slaveAddr, txBuf, txBufIdx, isFirstFrame, stopBit);
         if (ubi_err == UBI_ERR_OK)
         {
@@ -198,7 +193,7 @@ size_t UbiWire::write(uint8_t c)
         {
             break;
         }
-        if(txBufIdx >= UBI_WIRE_TX_BUF_LEN)
+        if (txBufIdx >= UBI_WIRE_TX_BUF_LEN)
         {
             break;
         }

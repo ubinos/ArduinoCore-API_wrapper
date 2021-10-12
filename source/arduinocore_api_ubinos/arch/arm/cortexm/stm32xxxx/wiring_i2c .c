@@ -152,10 +152,6 @@ ubi_err_t wiring_i2c_master_write(uint8_t slave_addr, uint8_t *data, uint16_t si
         {
             break;
         }
-        if (size <= 0)
-        {
-            break;
-        }
 
         while (HAL_I2C_GetState(&_arduino_wire) != HAL_I2C_STATE_READY)
         {
@@ -213,10 +209,6 @@ ubi_err_t wiring_i2c_master_read(uint8_t slave_addr, uint8_t *data, uint16_t siz
     do
     {
         if (data == NULL)
-        {
-            break;
-        }
-        if (size <= 0)
         {
             break;
         }
