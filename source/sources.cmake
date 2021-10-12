@@ -25,7 +25,7 @@ if(INCLUDE__ARDUINOCORE_API)
         include_directories(${_tmp_lib_src_dir})
         set(PROJECT_SOURCES ${PROJECT_SOURCES} ${_tmp_lib_src_dir}/Adafruit_BusIO_Register.cpp)
         set(PROJECT_SOURCES ${PROJECT_SOURCES} ${_tmp_lib_src_dir}/Adafruit_I2CDevice.cpp)
-#        set(PROJECT_SOURCES ${PROJECT_SOURCES} ${_tmp_lib_src_dir}/Adafruit_SPIDevice.cpp)
+        set(PROJECT_SOURCES ${PROJECT_SOURCES} ${_tmp_lib_src_dir}/Adafruit_SPIDevice.cpp)
     endif(ARDUINOCORE_API__INCLUDE_ADAFRUIT_BUSIO)
 
     if(ARDUINOCORE_API__INCLUDE_ADAFRUIT_SENSOR)

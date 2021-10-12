@@ -14,9 +14,9 @@ namespace arduino {
 class UbiSPI : public SPIClass
 {
 public:
-    UbiSPI();
-    // UbiSPI(int miso, int mosi, int sck);
-    // UbiSPI(PinName miso, PinName mosi, PinName sck);
+    UbiSPI()
+    {
+    }
 
     virtual ~UbiSPI()
     {

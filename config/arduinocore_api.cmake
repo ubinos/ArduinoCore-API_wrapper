@@ -9,6 +9,7 @@ set(INCLUDE__ARDUINOCORE_API TRUE)
 set_cache_default(ARDUINOCORE_API__BASE_DIR "${PROJECT_LIBRARY_DIR}/ArduinoCore-API" STRING "ArduinoCore-API project base dir")
 
 set_cache_default(ARDUINOCORE_API__USE_WIRE TRUE BOOL "Use Wire(I2C) API")
+set_cache_default(ARDUINOCORE_API__USE_SPI TRUE BOOL "Use SPI API")
 
 set_cache_default(ARDUINOCORE_API__ADAFRUIT_BUSIO_DIR "${PROJECT_LIBRARY_DIR}/Adafruit_BusIO" STRING "Adafruit_BusIO project base dir")
 set_cache_default(ARDUINOCORE_API__ADAFRUIT_SENSOR_DIR "${PROJECT_LIBRARY_DIR}/Adafruit_Sensor" STRING "Adafruit_Sensor project base dir")
@@ -27,6 +28,7 @@ set_cache_default(ARDUINOCORE_API__VERSION "10813" STRING "Arduino version")
 ####
 
 add_definitions("-DARDUINO=${ARDUINOCORE_API__VERSION}")
+add_definitions("-DADAFRUIT_BUSIO_NOT_USE_FAST_PINIO")
 
 get_filename_component(_tmp_api_dir "${ARDUINOCORE_API__BASE_DIR}" ABSOLUTE)
 get_filename_component(_tmp_wrapper_dir "${PROJECT_LIBRARY_DIR}/ArduinoCore-API_wrapper" ABSOLUTE)
