@@ -24,6 +24,11 @@ void delay(unsigned long ms)
     }
 }
 
+void delayMicroseconds(unsigned int us)
+{
+    bsp_busywaitus(us);
+}
+
 unsigned long millis(void)
 {
   return (unsigned long) ubik_tickcouttotimems(ubik_gettickcount());
