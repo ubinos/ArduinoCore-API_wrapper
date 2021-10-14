@@ -5,6 +5,7 @@
 #
 
 set(INCLUDE__ARDUINOCORE_API TRUE)
+set(PROJECT_UBINOS_LIBRARIES ${PROJECT_UBINOS_LIBRARIES} ArduinoCore-API_wrapper)
 
 set_cache_default(ARDUINOCORE_API__BASE_DIR "${PROJECT_LIBRARY_DIR}/ArduinoCore-API" STRING "ArduinoCore-API project base dir")
 
