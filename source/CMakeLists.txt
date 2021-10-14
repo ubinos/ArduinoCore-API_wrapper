@@ -21,6 +21,10 @@ project_add_library(stm32cubef2_extension)
 project_add_library(nrf5sdk_wrapper)
 project_add_library(nrf5sdk_extension)
 project_add_library(tflite-micro_wrapper)
+project_add_library(Adafruit_BusIO_wrapper)
+project_add_library(Adafruit_Sensor_wrapper)
+project_add_library(Adafruit_BME280_Library_wrapper)
+project_add_library(Arduino_LSM9DS1_wrapper)
 project_end()
 
 ###############################################################################
