@@ -239,6 +239,13 @@
 	@echo ""
 	@echo ""
 
+	@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+	@echo ""
+	@echo ""
+	make -f makefile.mk $@ CONFIG_DIR=../app CONFIG_NAME=arduino_tensorflowlite_hello_world_nucleof207zg
+	@echo ""
+	@echo ""
+
 
 	@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 	@echo ""
