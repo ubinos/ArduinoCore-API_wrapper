@@ -7,7 +7,7 @@
 #ifndef UBIWIRE_H_
 #define UBIWIRE_H_
 
-#include <HardwareI2C.h>
+#include <api/HardwareI2C.h>
 
 namespace arduino {
 

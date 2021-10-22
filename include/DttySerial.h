@@ -7,7 +7,7 @@
 #ifndef DTTYSERIAL_H_
 #define DTTYSERIAL_H_
 
-#include <Stream.h>
+#include <api/Stream.h>
 
 namespace arduino {
 

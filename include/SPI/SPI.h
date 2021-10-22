@@ -7,7 +7,7 @@
 #ifndef SPI_H_
 #define SPI_H_
 
-#include <HardwareSPI.h>
+#include <api/HardwareSPI.h>
 
 namespace arduino {
 
