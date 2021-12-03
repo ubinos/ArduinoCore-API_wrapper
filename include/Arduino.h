@@ -31,6 +31,8 @@
 
 #include "api/ArduinoAPI.h"
 
+#include <ubinos/bsp/arch.h>
+
 #if defined(__cplusplus)
 #undef F
 // C++11 F replacement declaration
@@ -73,6 +75,8 @@ extern "C"{
 // We provide analogReadResolution and analogWriteResolution APIs
 void analogReadResolution(int bits);
 void analogWriteResolution(int bits);
+
+uint32_t microsecondsToClockCycles(uint32_t time_ms);
 
 #ifdef __cplusplus
 } // extern "C"
