@@ -15,6 +15,13 @@
 
 #include "_variant.h"
 
+static int _readResolution = 10;
+
+void analogReadResolution(int res)
+{
+  _readResolution = res;
+}
+
 int analogRead(pin_size_t pinNumber)
 {
     ADC_HandleTypeDef AdcHandle;
@@ -36,7 +43,15 @@ int analogRead(pin_size_t pinNumber)
 
         AdcHandle.Instance = a_pin->adc_instance;
         AdcHandle.Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
-        AdcHandle.Init.Resolution = ADC_RESOLUTION_10B;
+        if (_readResolution <= 6) {
+            AdcHandle.Init.Resolution = ADC_RESOLUTION_6B;
+        } else if (_readResolution <= 8) {
+            AdcHandle.Init.Resolution = ADC_RESOLUTION_8B;
+        } else if (_readResolution <= 10) {
+            AdcHandle.Init.Resolution = ADC_RESOLUTION_10B;
+        } else {
+            AdcHandle.Init.Resolution = ADC_RESOLUTION_12B;
+        }
         AdcHandle.Init.ScanConvMode = DISABLE;
         AdcHandle.Init.ContinuousConvMode = DISABLE;
         AdcHandle.Init.DiscontinuousConvMode = DISABLE;
