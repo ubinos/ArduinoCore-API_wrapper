@@ -13,16 +13,25 @@
 
 #include <variant.h>
 
+#include "nrf.h"
 #include "nrf_delay.h"
 #include "nrf_gpio.h"
 #include "nrf_drv_twi.h"
+#include "nrf_drv_saadc.h"
 
 typedef struct _arduino_d_pin_t
 {
     uint32_t no;
 } arduino_d_pin_t;
 
+typedef struct _arduino_a_pin_t
+{
+    nrf_saadc_input_t adc_input;
+    uint8_t channel;
+} arduino_a_pin_t;
+
 extern arduino_d_pin_t const _g_d_pin_map[NUM_DIGITAL_PINS];
+extern arduino_a_pin_t const _g_a_pin_map[NUM_ANALOG_INPUTS];
 
 #endif /* _VARIANT_NRF52_H_ */
 

@@ -33,6 +33,16 @@ arduino_d_pin_t const _g_d_pin_map[NUM_DIGITAL_PINS] =
     {NRF_GPIO_PIN_MAP(1, 15)}, // D13
 };
 
+arduino_a_pin_t const _g_a_pin_map[NUM_ANALOG_INPUTS] =
+{
+    {NRF_SAADC_INPUT_AIN1, 0}, // A0 P0.03
+    {NRF_SAADC_INPUT_AIN2, 1}, // A1 P0.04
+    {NRF_SAADC_INPUT_AIN4, 2}, // A2 P0.28
+    {NRF_SAADC_INPUT_AIN5, 3}, // A3 P0.29
+    {NRF_SAADC_INPUT_AIN6, 4}, // A4 P0.30
+    {NRF_SAADC_INPUT_AIN7, 5}, // A5 P0.31
+};
+
 void initVariant(void)
 {
 }

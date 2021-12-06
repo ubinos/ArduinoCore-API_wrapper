@@ -14,5 +14,7 @@ enum {
     NUM_ANALOG_INPUTS
 };
 
+/* Available analog input resolution : 6 ~ 12 bits */
+
 #endif /* PINS_ARDUINO_ANALOG_H_ */
 

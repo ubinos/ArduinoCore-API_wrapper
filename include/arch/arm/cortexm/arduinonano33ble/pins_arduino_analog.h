@@ -10,9 +10,11 @@
 #include "variant.h"
 
 enum {
-    A0,  A1,  A2,  A3,  A4,  A5,
+    A0,  A1,  A2,  A3,  A4,  A5,  A6,  A7,
     NUM_ANALOG_INPUTS
 };
+
+/* Available analog input resolution : 8 ~ 14 bits */
 
 #endif /* PINS_ARDUINO_ANALOG_H_ */
 
