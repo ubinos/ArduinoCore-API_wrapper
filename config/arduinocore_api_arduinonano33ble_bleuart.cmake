@@ -40,7 +40,7 @@ string(TOLOWER ${UBINOS__BSP__BOARD_MODEL} _tmp_board_model)
 get_filename_component(_tmp_source_dir "${PROJECT_LIBRARY_DIR}/ArduinoCore-API_wrapper/source/arduinocore_api_ubinos/arch/arm/cortexm/${_tmp_board_model}" ABSOLUTE)
 
 include_directories(${_tmp_source_dir}/${_temp_softdevice_name}/config)
-include_directories(${_tmp_source_dir})
 
+add_definitions("-DARDUINO_ARCH_NRF52")
 add_definitions("-DARDUINO_ARDUINO_NANO33BLE")
 

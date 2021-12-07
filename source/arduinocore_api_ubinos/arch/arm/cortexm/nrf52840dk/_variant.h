@@ -11,7 +11,7 @@
 
 #include <ubinos/bsp/arch.h>
 
-#include "../../../nrf52/_variant_nrf52.h"
+#include "../nrf52/_variant_nrf52.h"
 
 /* Wire  */
 #define ARDUINO_WIRE_SCL_PIN NRF_GPIO_PIN_MAP(0, 27)

@@ -25,10 +25,16 @@ include_directories(${_tmp_source_dir})
 get_filename_component(_tmp_wrapper_dir "${PROJECT_LIBRARY_DIR}/ArduinoCore-API_wrapper" ABSOLUTE)
 string(TOLOWER ${UBINOS__BSP__BOARD_MODEL} _tmp_board_model)
 
-include_directories("${_tmp_wrapper_dir}/include/arch/arm/cortexm/${_tmp_board_model}")
 include_directories("${_tmp_wrapper_dir}/include/Wire")
 include_directories("${_tmp_wrapper_dir}/include/SPI")
 include_directories("${_tmp_wrapper_dir}/include")
+
+if(UBINOS__BSP__CORTEX_MX)
+    include_directories("${_tmp_wrapper_dir}/include/arch/arm/cortexm/${_tmp_board_model}")
+    include_directories("${_tmp_wrapper_dir}/source/arduinocore_api_ubinos/arch/arm/cortexm/${_tmp_board_model}")
+else()
+    message(FATAL_ERROR "Unsupported CPU_ARCH")
+endif(UBINOS__BSP__CORTEX_MX)
 
 add_definitions("-DARDUINO=${ARDUINOCORE_API__VERSION}")
 add_definitions("-DADAFRUIT_BUSIO_NOT_USE_FAST_PINIO")
