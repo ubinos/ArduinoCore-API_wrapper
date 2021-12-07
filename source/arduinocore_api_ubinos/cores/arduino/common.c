@@ -11,6 +11,8 @@
 uint32_t microsecondsToClockCycles(uint32_t time_ms)
 {
     int r;
+    (void) r;
+
     unsigned int freqk_p;
 
     r = bsp_getcpuclockfreqk(&freqk_p);
