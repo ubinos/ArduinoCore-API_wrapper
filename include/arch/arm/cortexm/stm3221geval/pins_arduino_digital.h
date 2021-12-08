@@ -10,7 +10,7 @@
 #include "variant.h"
 
 enum {
-    D8, D9,
+    D0, D1,
     NUM_DIGITAL_PINS
 };
 

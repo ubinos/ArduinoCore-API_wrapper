@@ -17,8 +17,8 @@
 
 arduino_d_pin_t const _g_d_pin_map[NUM_DIGITAL_PINS] =
 {
-    {GPIOG, GPIO_PIN_6 , 0, 0            , 0   , 0            , 0            }, // D8
-    {GPIOG, GPIO_PIN_8 , 0, 0            , 0   , 0            , 0            }, // D9
+    {GPIOG, GPIO_PIN_6 , 0, 0            , 0   , 0            , 0            }, // D0
+    {GPIOG, GPIO_PIN_8 , 0, 0            , 0   , 0            , 0            }, // D1
 };
 
 arduino_a_pin_t const _g_a_pin_map[NUM_ANALOG_INPUTS] =
