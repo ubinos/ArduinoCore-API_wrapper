@@ -23,9 +23,17 @@ void pinMode(pin_size_t pinNumber, PinMode pinMode)
     {
         if (pinNumber >= NUM_DIGITAL_PINS)
         {
+            logme("pinNumber is out of range");
             break;
         }
+
         d_pin = &_g_d_pin_map[pinNumber];
+
+        if (d_pin->enable == 0)
+        {
+            logme("Not enabled");
+            break;
+        }
 
         switch (pinMode) {
         case INPUT:

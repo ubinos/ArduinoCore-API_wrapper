@@ -22,12 +22,14 @@
 typedef struct _arduino_d_pin_t
 {
     uint32_t no;
+    uint8_t enable;
 } arduino_d_pin_t;
 
 typedef struct _arduino_a_pin_t
 {
     nrf_saadc_input_t adc_input;
     uint8_t channel;
+    uint8_t enable;
 } arduino_a_pin_t;
 
 extern arduino_d_pin_t const _g_d_pin_map[NUM_DIGITAL_PINS];

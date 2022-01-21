@@ -39,6 +39,12 @@ int analogRead(pin_size_t pinNumber)
 
         a_pin = &_g_a_pin_map[pinNumber];
 
+        if (a_pin->enable == 0)
+        {
+            logme("Not enabled");
+            break;
+        }
+
         if (!_is_nrf_drv_saadc_init)
         {
             err_code = nrf_drv_saadc_init(NULL, NULL);

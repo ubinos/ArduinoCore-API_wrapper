@@ -41,6 +41,12 @@ int analogRead(pin_size_t pinNumber)
 
         a_pin = &_g_a_pin_map[pinNumber];
 
+        if (a_pin->enable == 0)
+        {
+            logme("Not enabled");
+            break;
+        }
+
         AdcHandle.Instance = a_pin->adc_instance;
         AdcHandle.Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
         if (_readResolution <= 6) {

@@ -8,6 +8,7 @@
 
 #if (INCLUDE__ARDUINOCORE_API == 1)
 #if (UBINOS__BSP__BOARD_MODEL == UBINOS__BSP__BOARD_MODEL__STM3221GEVAL)
+#if (UBINOS__BSP__BOARD_VARIATION__NONE == 1)
 
 #include <Arduino.h>
 
@@ -17,8 +18,8 @@
 
 arduino_d_pin_t const _g_d_pin_map[NUM_DIGITAL_PINS] =
 {
-    {GPIOG, GPIO_PIN_6 , 0, 0            , 0   , 0            , 0            }, // D0
-    {GPIOG, GPIO_PIN_8 , 0, 0            , 0   , 0            , 0            }, // D1
+    {GPIOG, GPIO_PIN_6 , 0, 0            , 0   , 0            , 0            , 1}, // D0
+    {GPIOG, GPIO_PIN_8 , 0, 0            , 0   , 0            , 0            , 1}, // D1
 };
 
 arduino_a_pin_t const _g_a_pin_map[NUM_ANALOG_INPUTS] =
@@ -43,6 +44,7 @@ void initVariant(void)
     _arduino_tone.pin_initiated = 0;
 }
 
+#endif /* (UBINOS__BSP__BOARD_VARIATION__NONE == 1) */
 #endif /* (UBINOS__BSP__BOARD_MODEL == UBINOS__BSP__BOARD_MODEL__STM3221GEVAL) */
 #endif /* (INCLUDE__ARDUINOCORE_API == 1) */
 
