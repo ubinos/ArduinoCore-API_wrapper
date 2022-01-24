@@ -8,7 +8,7 @@
 
 #if (INCLUDE__ARDUINOCORE_API == 1)
 #if (UBINOS__BSP__BOARD_MODEL == UBINOS__BSP__BOARD_MODEL__STM3221GEVAL)
-#if (UBINOS__BSP__BOARD_VARIATION__NONE == 1)
+#if (UBINOS__BSP__BOARD_VARIATION__STM3221GEVAL == 1)
 
 #include <Arduino.h>
 
@@ -44,7 +44,7 @@ void initVariant(void)
     _arduino_tone.pin_initiated = 0;
 }
 
-#endif /* (UBINOS__BSP__BOARD_VARIATION__NONE == 1) */
+#endif /* (UBINOS__BSP__BOARD_VARIATION__STM3221GEVAL == 1) */
 #endif /* (UBINOS__BSP__BOARD_MODEL == UBINOS__BSP__BOARD_MODEL__STM3221GEVAL) */
 #endif /* (INCLUDE__ARDUINOCORE_API == 1) */
 
