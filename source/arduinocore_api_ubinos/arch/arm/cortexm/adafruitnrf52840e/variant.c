@@ -32,6 +32,8 @@ arduino_d_pin_t const _g_d_pin_map[NUM_DIGITAL_PINS] =
     {NRF_GPIO_PIN_MAP(0,  6), 1}, // D11
     {NRF_GPIO_PIN_MAP(0,  8), 1}, // D12
     {NRF_GPIO_PIN_MAP(1,  9), 1}, // D13
+    {NRF_GPIO_PIN_MAP(1, 15), 1}, // LED_BUILTIN
+    {NRF_GPIO_PIN_MAP(1, 10), 1}, // LED_BUILTIN_2
 };
 
 arduino_a_pin_t const _g_a_pin_map[NUM_ANALOG_INPUTS] =
