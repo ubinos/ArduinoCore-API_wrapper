@@ -57,10 +57,19 @@ uint8_t UbiWire::endTransmission(bool stopBit)
 {
     int r = 1;
     ubi_err_t ubi_err;
+    uint8_t tmp_buf[4];
 
     do
     {
-        ubi_err = wiring_i2c_master_write(slaveAddr, txBuf, txBufIdx, isFirstFrame, stopBit);
+        if (txBufIdx > 0)
+        {
+            ubi_err = wiring_i2c_master_write(slaveAddr, txBuf, txBufIdx, isFirstFrame, stopBit);
+        }
+        else
+        {
+            // For detecting device
+            ubi_err = wiring_i2c_master_read(slaveAddr, tmp_buf, 1, isFirstFrame, stopBit);
+        }
         if (ubi_err == UBI_ERR_OK)
         {
             state = UBI_WIRE_STATE_IDLE;
