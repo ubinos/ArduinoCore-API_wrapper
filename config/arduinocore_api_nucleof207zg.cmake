@@ -21,7 +21,7 @@ include(${CMAKE_CURRENT_LIST_DIR}/arduinocore_api.cmake)
 
 ####
 
-string(TOLOWER ${UBINOS__BSP__BOARD_MODEL} _tmp_board_model)
+string(TOLOWER ${UBINOS__BSP__BOARD_VARIATION_NAME} _tmp_board_model)
 
 get_filename_component(_tmp_source_dir "${PROJECT_LIBRARY_DIR}/ArduinoCore-API_wrapper/source/arduinocore_api_ubinos/arch/arm/cortexm/${_tmp_board_model}" ABSOLUTE)
 

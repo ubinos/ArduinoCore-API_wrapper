@@ -23,7 +23,7 @@ get_filename_component(_tmp_source_dir "${ARDUINOCORE_API__BASE_DIR}" ABSOLUTE)
 include_directories(${_tmp_source_dir})
 
 get_filename_component(_tmp_wrapper_dir "${PROJECT_LIBRARY_DIR}/ArduinoCore-API_wrapper" ABSOLUTE)
-string(TOLOWER ${UBINOS__BSP__BOARD_MODEL} _tmp_board_model)
+string(TOLOWER ${UBINOS__BSP__BOARD_VARIATION_NAME} _tmp_board_model)
 
 include_directories("${_tmp_wrapper_dir}/include/Wire")
 include_directories("${_tmp_wrapper_dir}/include/SPI")

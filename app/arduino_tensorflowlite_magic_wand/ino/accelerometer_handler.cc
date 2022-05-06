@@ -13,18 +13,18 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#if defined(ARDUINO) && !defined(ARDUINO_ARDUINO_NANO33BLE)
-#define ARDUINO_EXCLUDE_CODE
-#endif  // defined(ARDUINO) && !defined(ARDUINO_ARDUINO_NANO33BLE)
+// #if defined(ARDUINO) && !defined(ARDUINO_ARDUINO_NANO33BLE)
+// #define ARDUINO_EXCLUDE_CODE
+// #endif  // defined(ARDUINO) && !defined(ARDUINO_ARDUINO_NANO33BLE)
 
 #ifndef ARDUINO_EXCLUDE_CODE
 
-#include "tensorflow/lite/micro/examples/magic_wand/accelerometer_handler.h"
+#include "accelerometer_handler.h"
 
 #include <Arduino.h>
 #include <Arduino_LSM9DS1.h>
 
-#include "tensorflow/lite/micro/examples/magic_wand/constants.h"
+#include "constants.h"
 
 // A buffer holding the last 200 sets of 3-channel values
 float save_data[600] = {0.0};
