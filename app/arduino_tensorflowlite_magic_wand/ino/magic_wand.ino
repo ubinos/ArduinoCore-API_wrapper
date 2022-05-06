@@ -45,7 +45,7 @@ uint8_t tensor_arena[kTensorArenaSize];
 // The name of this function is important for Arduino compatibility.
 void setup() {
 
-  pinMode(D2, INPUT_PULLUP);
+  pinMode(data_button, INPUT_PULLUP);
 
   tflite::InitializeTarget();
 

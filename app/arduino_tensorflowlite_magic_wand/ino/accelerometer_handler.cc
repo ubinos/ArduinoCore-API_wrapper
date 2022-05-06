@@ -104,7 +104,7 @@ bool ReadAccelerometer(tflite::ErrorReporter* error_reporter, float* input,
     const float norm_y = y;
     const float norm_z = x;
 
-    if (digitalRead(D2) == 0)
+    if (digitalRead(data_button) == 0)
     {
       if (is_first)
       {

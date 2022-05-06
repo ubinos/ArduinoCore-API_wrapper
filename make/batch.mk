@@ -243,34 +243,40 @@
 	@echo ""
 
 
-	# @echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-	# @echo ""
-	# @echo ""
-	# make -f makefile.mk $@ CONFIG_DIR=../app CONFIG_NAME=arduino_adafruit_bme280_bme280test_nucleof207zg
-	# @echo ""
-	# @echo ""
-	# @echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-	# @echo ""
-	# @echo ""
-	# make -f makefile.mk $@ CONFIG_DIR=../app CONFIG_NAME=arduino_adafruit_bme280_bme280test_nrf52840dk
-	# @echo ""
-	# @echo ""
+	@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+	@echo ""
+	@echo ""
+	make -f makefile.mk $@ CONFIG_DIR=../app CONFIG_NAME=arduino_adafruit_bme280_bme280test_nucleof207zg
+	@echo ""
+	@echo ""
+	@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+	@echo ""
+	@echo ""
+	make -f makefile.mk $@ CONFIG_DIR=../app CONFIG_NAME=arduino_adafruit_bme280_bme280test_nrf52840dk
+	@echo ""
+	@echo ""
+	@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+	@echo ""
+	@echo ""
+	make -f makefile.mk $@ CONFIG_DIR=../app CONFIG_NAME=arduino_adafruit_bme280_bme280test_adafruitnrf52840e
+	@echo ""
+	@echo ""
 
 
-	# @echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-	# @echo ""
-	# @echo ""
-	# make -f makefile.mk $@ CONFIG_DIR=../app CONFIG_NAME=arduino_adafruit_bme280_bme280_unified_nucleof207zg
-	# @echo ""
-	# @echo ""
+	@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+	@echo ""
+	@echo ""
+	make -f makefile.mk $@ CONFIG_DIR=../app CONFIG_NAME=arduino_adafruit_bme280_bme280_unified_nucleof207zg
+	@echo ""
+	@echo ""
 
 
-	# @echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-	# @echo ""
-	# @echo ""
-	# make -f makefile.mk $@ CONFIG_DIR=../app CONFIG_NAME=arduino_adafruit_bme280_advancedsettings_nucleof207zg
-	# @echo ""
-	# @echo ""
+	@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+	@echo ""
+	@echo ""
+	make -f makefile.mk $@ CONFIG_DIR=../app CONFIG_NAME=arduino_adafruit_bme280_advancedsettings_nucleof207zg
+	@echo ""
+	@echo ""
 
 
 	@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
@@ -304,6 +310,18 @@
 	@echo ""
 	@echo ""
 	make -f makefile.mk $@ CONFIG_DIR=../app CONFIG_NAME=arduino_tensorflowlite_magic_wand_arduinonano33ble_bleuart
+	@echo ""
+	@echo ""
+	@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+	@echo ""
+	@echo ""
+	make -f makefile.mk $@ CONFIG_DIR=../app CONFIG_NAME=arduino_tensorflowlite_magic_wand_adafruitnrf52840e
+	@echo ""
+	@echo ""
+	@echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+	@echo ""
+	@echo ""
+	make -f makefile.mk $@ CONFIG_DIR=../app CONFIG_NAME=arduino_tensorflowlite_magic_wand_adafruitnrf52840e_bleuart
 	@echo ""
 	@echo ""
 

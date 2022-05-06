@@ -26,4 +26,10 @@ extern TfLiteStatus SetupAccelerometer(tflite::ErrorReporter* error_reporter);
 extern bool ReadAccelerometer(tflite::ErrorReporter* error_reporter,
                               float* input, int length);
 
+#if defined(ARDUINO_ARDUINO_NANO33BLE)
+    #define data_button D2
+#else
+    #define data_button D5
+#endif
+
 #endif  // TENSORFLOW_LITE_MICRO_EXAMPLES_MAGIC_WAND_ACCELEROMETER_HANDLER_H_
