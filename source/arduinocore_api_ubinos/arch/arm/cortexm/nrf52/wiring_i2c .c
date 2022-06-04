@@ -25,11 +25,25 @@ ubi_err_t wiring_i2c_init(uint32_t addr, uint32_t clock)
 {
     ubi_err_t ubi_err = UBI_ERR_ERROR;
     ret_code_t nrf_err;
+    nrf_drv_twi_frequency_t frequency;
+
+    if (clock >= 400000)
+    {
+        frequency = NRF_DRV_TWI_FREQ_400K;
+    }
+    else if (clock >= 250000)
+    {
+        frequency = NRF_DRV_TWI_FREQ_250K;
+    }
+    else
+    {
+        frequency = NRF_DRV_TWI_FREQ_100K;
+    }
 
     const nrf_drv_twi_config_t twi_config = {
        .scl                = ARDUINO_WIRE_SCL_PIN,
        .sda                = ARDUINO_WIRE_SDA_PIN,
-       .frequency          = NRF_DRV_TWI_FREQ_100K,
+       .frequency          = frequency,
        .interrupt_priority = APP_IRQ_PRIORITY_HIGH,
        .clear_bus_init     = false
     };
@@ -54,6 +68,8 @@ ubi_err_t wiring_i2c_init(uint32_t addr, uint32_t clock)
 ubi_err_t wiring_i2c_deinit(void)
 {
     nrf_drv_twi_disable(&m_twi);
+
+    nrf_drv_twi_uninit(&m_twi);
 
     return UBI_ERR_OK;
 }
