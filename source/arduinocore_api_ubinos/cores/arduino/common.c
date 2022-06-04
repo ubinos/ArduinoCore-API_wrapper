@@ -21,5 +21,10 @@ uint32_t microsecondsToClockCycles(uint32_t time_ms)
     return (time_ms * (freqk_p / 1000));
 }
 
+void yield(void)
+{
+    task_yield();
+}
+
 #endif /* (INCLUDE__ARDUINOCORE_API == 1) */
 
