@@ -44,6 +44,9 @@ arduino_a_pin_t const _g_a_pin_map[NUM_ANALOG_INPUTS] =
     {NRF_SAADC_INPUT_AIN4, 3, 1}, // A3 P0.28
     {NRF_SAADC_INPUT_AIN0, 4, 1}, // A4 P0.02
     {NRF_SAADC_INPUT_AIN1, 5, 1}, // A5 P0.03
+    {NRF_SAADC_INPUT_AIN5, 6, 1}, // A6 P0.29 PIN_VBAT
+    {NRF_SAADC_INPUT_AIN7, 7, 1}, // A7 P0.31 PIN_AREF
+
 };
 
 void initVariant(void)

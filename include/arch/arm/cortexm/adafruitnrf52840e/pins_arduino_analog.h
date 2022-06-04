@@ -11,7 +11,13 @@
 
 enum {
     A0,  A1,  A2,  A3,  A4,  A5,
+    A6, A7,
     NUM_ANALOG_INPUTS
+};
+
+enum {
+    PIN_VBAT = A6,
+    PIN_AREF = A7,
 };
 
 /* Available analog input resolution : 8 ~ 14 bits */
