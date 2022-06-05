@@ -25,6 +25,7 @@ public:
     uint8_t transfer(uint8_t data);
     uint16_t transfer16(uint16_t data);
     void transfer(void *buf, size_t count);
+    void transfer(const void *tx_buf, void *rx_buf, size_t count);
 
     // Transaction Functions
     void usingInterrupt(int interruptNumber);

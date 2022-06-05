@@ -32,6 +32,11 @@ void UbiSPI::transfer(void *buf, size_t count)
     // FIXME: need to implement
 }
 
+void UbiSPI::transfer(const void *tx_buf, void *rx_buf, size_t count)
+{
+    // FIXME: need to implement
+}
+
 void UbiSPI::usingInterrupt(int interruptNumber)
 {
     // FIXME: need to implement
