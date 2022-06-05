@@ -18,10 +18,56 @@
 static int _readResolution = 10;
 static uint8_t _is_nrf_drv_saadc_init = 0;
 
+static uint32_t _saadcReference = SAADC_CH_CONFIG_REFSEL_Internal;
+static uint32_t _saadcGain      = SAADC_CH_CONFIG_GAIN_Gain1_6;
+
 void analogReadResolution(int res)
 {
   _readResolution = res;
 }
+
+/*
+ * Internal Reference is +/-0.6V, with an adjustable gain of 1/6, 1/5, 1/4,
+ * 1/3, 1/2 or 1, meaning 3.6, 3.0, 2.4, 1.8, 1.2 or 0.6V for the ADC levels.
+ *
+ * External Reference is VDD/4, with an adjustable gain of 1, 2 or 4, meaning
+ * VDD/4, VDD/2 or VDD for the ADC levels.
+ *
+ * Default settings are internal reference with 1/6 gain (GND..3.6V ADC range)
+ */
+void analogReference(uint8_t mode)
+{
+  switch ( mode ) {
+    case AR_VDD4:
+      _saadcReference = SAADC_CH_CONFIG_REFSEL_VDD1_4;
+      _saadcGain      = SAADC_CH_CONFIG_GAIN_Gain1_4;
+      break;
+    case AR_INTERNAL_3_0:
+      _saadcReference = SAADC_CH_CONFIG_REFSEL_Internal;
+      _saadcGain      = SAADC_CH_CONFIG_GAIN_Gain1_5;
+      break;
+    case AR_INTERNAL_2_4:
+      _saadcReference = SAADC_CH_CONFIG_REFSEL_Internal;
+      _saadcGain      = SAADC_CH_CONFIG_GAIN_Gain1_4;
+      break;
+    case AR_INTERNAL_1_8:
+      _saadcReference = SAADC_CH_CONFIG_REFSEL_Internal;
+      _saadcGain      = SAADC_CH_CONFIG_GAIN_Gain1_3;
+      break;
+    case AR_INTERNAL_1_2:
+      _saadcReference = SAADC_CH_CONFIG_REFSEL_Internal;
+      _saadcGain      = SAADC_CH_CONFIG_GAIN_Gain1_2;
+      break;
+    case AR_DEFAULT:
+    case AR_INTERNAL:
+    default:
+      _saadcReference = SAADC_CH_CONFIG_REFSEL_Internal;
+      _saadcGain      = SAADC_CH_CONFIG_GAIN_Gain1_6;
+      break;
+
+  }
+}
+
 
 int analogRead(pin_size_t pinNumber)
 {
@@ -64,6 +110,8 @@ int analogRead(pin_size_t pinNumber)
         }
 
         nrf_saadc_channel_config_t channel_config = NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(a_pin->adc_input);
+        channel_config.reference = _saadcReference;
+        channel_config.gain = _saadcGain;
 
         err_code = nrf_drv_saadc_channel_init(a_pin->channel, &channel_config);
         APP_ERROR_CHECK(err_code);
