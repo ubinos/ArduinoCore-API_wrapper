@@ -40,3 +40,7 @@ get_filename_component(_tmp_source_dir "${PROJECT_LIBRARY_DIR}/ArduinoCore-API_w
 include_directories(${_tmp_source_dir}/${_temp_softdevice_name}/config)
 
 add_definitions("-DARDUINO_ARCH_NRF52")
+add_definitions("-DNRF52_SERIES")
+add_definitions("-DARDUINO_NRF52840_FEATHER")
+add_definitions("-DARDUINO_NRF52_ADAFRUIT")
+add_definitions("-DARDUINO_FEATHER52")
