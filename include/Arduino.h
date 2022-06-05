@@ -116,6 +116,13 @@ extern analogin_config_t adcCurrentConfig;
 #define serialEvent serialEventDtty
 extern void serialEventDtty(void) __attribute__((weak));
 
+#ifndef rtos_malloc
+    #define rtos_malloc   malloc
+#endif
+#ifndef rtos_free
+    #define rtos_free     free
+#endif
+
 // #include "overloads.h"
 
 #endif /* __cplusplus */
