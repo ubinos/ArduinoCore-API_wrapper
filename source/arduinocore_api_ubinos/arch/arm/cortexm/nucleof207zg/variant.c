@@ -18,6 +18,7 @@
 
 arduino_d_pin_t const _g_d_pin_map[NUM_DIGITAL_PINS] =
 {
+//   port, no, support_pwm, alternate, tim_instance, tim_channel, tim_clock, enable
     {GPIOG, GPIO_PIN_9 , 0, 0            , 0   , 0            , 0            , 1}, // D0
     {GPIOG, GPIO_PIN_14, 0, 0            , 0   , 0            , 0            , 1}, // D1
     {GPIOF, GPIO_PIN_15, 0, 0            , 0   , 0            , 0            , 1}, // D2
@@ -38,6 +39,7 @@ arduino_d_pin_t const _g_d_pin_map[NUM_DIGITAL_PINS] =
 
 arduino_a_pin_t const _g_a_pin_map[NUM_ANALOG_INPUTS] =
 {
+//  port, no, adc_instance, adc_channel, enable
     {GPIOA, GPIO_PIN_3 , ADC3, ADC_CHANNEL_3 , 1}, // A0
     {GPIOC, GPIO_PIN_0 , ADC3, ADC_CHANNEL_10, 1}, // A1
     {GPIOC, GPIO_PIN_3 , ADC3, ADC_CHANNEL_13, 1}, // A2
