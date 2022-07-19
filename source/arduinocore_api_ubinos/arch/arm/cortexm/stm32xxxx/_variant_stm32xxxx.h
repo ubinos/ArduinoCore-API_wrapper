@@ -49,9 +49,18 @@ typedef struct _arduino_tone_t
     uint8_t enable;
 } arduino_tone_t;
 
+typedef struct _arduino_d_pin_tim_t
+{
+    TIM_HandleTypeDef tim_handle;
+    TIM_OC_InitTypeDef tim_config;
+    uint32_t plus_width_min;
+    uint32_t plus_width_max;
+    uint32_t angle;
+} arduino_d_pin_tim_t;
 
 extern arduino_d_pin_t const _g_d_pin_map[NUM_DIGITAL_PINS];
 extern arduino_a_pin_t const _g_a_pin_map[NUM_ANALOG_INPUTS];
+extern arduino_d_pin_tim_t _g_d_pin_tims[NUM_DIGITAL_PINS];
 extern arduino_tone_t _arduino_tone;
 extern I2C_HandleTypeDef _arduino_wire;
 

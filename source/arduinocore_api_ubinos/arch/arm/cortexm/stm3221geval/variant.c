@@ -26,12 +26,19 @@ arduino_a_pin_t const _g_a_pin_map[NUM_ANALOG_INPUTS] =
 {
 };
 
+arduino_d_pin_tim_t _g_d_pin_tims[NUM_DIGITAL_PINS];
+
 arduino_tone_t _arduino_tone;
 
 void initVariant(void)
 {
     // for digital io
     __HAL_RCC_GPIOG_CLK_ENABLE();
+
+    for (int i = 0; i < NUM_DIGITAL_PINS; i++)
+    {
+        _g_d_pin_tims[i].tim_handle.Instance = NULL;
+    }
 
     // for analog in
 
