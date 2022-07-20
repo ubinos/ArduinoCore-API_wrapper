@@ -34,6 +34,11 @@ unsigned long millis(void)
   return (unsigned long) ubik_tickcouttotimems(ubik_gettickcount());
 }
 
+unsigned long micros(void)
+{
+    return millis() * 1000;
+}
+
 #endif /* (UBINOS__BSP__NRF52_NRF52XXX == 1) */
 #endif /* (INCLUDE__ARDUINOCORE_API == 1) */
 
