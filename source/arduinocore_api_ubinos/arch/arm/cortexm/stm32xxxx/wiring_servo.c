@@ -68,9 +68,9 @@ ubi_err_t wiring_servo_init(int pinNumber, int min, int max)
         GPIO_InitStruct.Pull = GPIO_PULLUP;
         GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
 
-        pTimHandle = &d_pin_tim->tim_handle;
-
         HAL_GPIO_Init(GPIO_Port, &GPIO_InitStruct);
+
+        pTimHandle = &d_pin_tim->tim_handle;
 
         pTimHandle->Instance = d_pin->tim_instance;
         pTimHandle->Init.Prescaler = uhPrescalerValue;

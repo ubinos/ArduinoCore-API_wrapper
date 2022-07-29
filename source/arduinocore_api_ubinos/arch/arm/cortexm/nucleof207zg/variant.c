@@ -84,22 +84,24 @@ void initVariant(void)
     {
         a_pin = &_g_a_pin_map[i];
 
-        GPIO_Port = a_pin->port;
-        GPIO_InitStruct.Pin = a_pin->no;
-        GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
-        GPIO_InitStruct.Pull = GPIO_NOPULL;
-        HAL_GPIO_Init(GPIO_Port, &GPIO_InitStruct);
+        if (a_pin->enable)
+        {
+            GPIO_Port = a_pin->port;
+            GPIO_InitStruct.Pin = a_pin->no;
+            GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+            GPIO_InitStruct.Pull = GPIO_NOPULL;
+            HAL_GPIO_Init(GPIO_Port, &GPIO_InitStruct);
+        }
     }
 
     ////////////////////////////////////////
-    // for analog out (pwm)
+    // for analog, servo, tone out (pwm)
     __HAL_RCC_TIM1_CLK_ENABLE();
     __HAL_RCC_TIM4_CLK_ENABLE();
+    __HAL_RCC_TIM3_CLK_ENABLE();
 
     ////////////////////////////////////////
     // for tone
-    __HAL_RCC_TIM3_CLK_ENABLE();
-
     _arduino_tone.timer_initiated = 0;
     _arduino_tone.pin_initiated = 0;
 }

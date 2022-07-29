@@ -42,11 +42,12 @@ void initVariant(void)
 
     // for analog in
 
-    // for analog out (pwm)
-
-    // for tone
+    ////////////////////////////////////////
+    // for analog, servo, tone out (pwm)
     __HAL_RCC_TIM3_CLK_ENABLE();
 
+    ////////////////////////////////////////
+    // for tone
     _arduino_tone.timer_initiated = 0;
     _arduino_tone.pin_initiated = 0;
 }
