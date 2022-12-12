@@ -19,11 +19,13 @@ limitations under the License.
 
 #ifndef ARDUINO_EXCLUDE_CODE
 
-#include "output_handler.h"
-
 #include "Arduino.h"
 
-void HandleOutput(tflite::ErrorReporter* error_reporter, int kind) {
+#include "output_handler.h"
+
+#include "tensorflow/lite/micro/micro_log.h"
+
+void HandleOutput(int kind) {
   // The first time this method runs, set up our LED
   static bool is_initialized = false;
   if (!is_initialized) {
@@ -33,22 +35,19 @@ void HandleOutput(tflite::ErrorReporter* error_reporter, int kind) {
 
   // Print some ASCII art for each gesture and control the LED.
   if (kind == 0) {
-    TF_LITE_REPORT_ERROR(
-        error_reporter,
+    MicroPrintf(
         "WING:\n\r*         *         *\n\r *       * *       "
         "*\n\r  *     *   *     *\n\r   *   *     *   *\n\r    * *       "
         "* *\n\r     *         *\n\r");
   } else if (kind == 1) {
     digitalWrite(LED_BUILTIN, HIGH);
-    TF_LITE_REPORT_ERROR(
-        error_reporter,
+    MicroPrintf(
         "RING:\n\r          *\n\r       *     *\n\r     *         *\n\r "
         "   *           *\n\r     *         *\n\r       *     *\n\r      "
         "    *\n\r");
   } else if (kind == 2) {
     digitalWrite(LED_BUILTIN, LOW);
-    TF_LITE_REPORT_ERROR(
-        error_reporter,
+    MicroPrintf(
         "SLOPE:\n\r        *\n\r       *\n\r      *\n\r     *\n\r    "
         "*\n\r   *\n\r  *\n\r * * * * * * * *\n\r");
   }

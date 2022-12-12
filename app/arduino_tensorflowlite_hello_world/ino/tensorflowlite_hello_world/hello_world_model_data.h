@@ -22,10 +22,10 @@ limitations under the License.
 
 // See train/README.md for a full description of the creation process.
 
-#ifndef TENSORFLOW_LITE_MICRO_EXAMPLES_HELLO_WORLD_MODEL_H_
-#define TENSORFLOW_LITE_MICRO_EXAMPLES_HELLO_WORLD_MODEL_H_
+#ifndef TENSORFLOW_LITE_MICRO_EXAMPLES_HELLO_WORLD_MODEL_DATA_H_
+#define TENSORFLOW_LITE_MICRO_EXAMPLES_HELLO_WORLD_MODEL_DATA_H_
 
 extern const unsigned char g_hello_world_model_data[];
-extern const unsigned int g_hello_world_model_data_size;
+extern const unsigned int g_hello_world_model_data_len;
 
-#endif  // TENSORFLOW_LITE_MICRO_EXAMPLES_HELLO_WORLD_MODEL_H_
+#endif  // TENSORFLOW_LITE_MICRO_EXAMPLES_HELLO_WORLD_MODEL_DATA_H_

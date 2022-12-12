@@ -46,4 +46,4 @@ endif(UBINOS__BSP__CORTEX_MX)
 
 add_definitions("-DARDUINO=${ARDUINOCORE_API__VERSION}")
 add_definitions("-DADAFRUIT_BUSIO_NOT_USE_FAST_PINIO")
-
+add_definitions("-DARDUINOSTL_M_H")

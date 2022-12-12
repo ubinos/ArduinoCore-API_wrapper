@@ -19,12 +19,13 @@ limitations under the License.
 
 #ifndef ARDUINO_EXCLUDE_CODE
 
-#include "accelerometer_handler.h"
-
 #include <Arduino.h>
 #include <Arduino_LSM9DS1.h>
 
 #include "constants.h"
+#include "accelerometer_handler.h"
+
+#include "tensorflow/lite/micro/micro_log.h"
 
 // A buffer holding the last 200 sets of 3-channel values
 float save_data[600] = {0.0};
@@ -37,10 +38,10 @@ int sample_every_n;
 // The number of measurements since we last saved one
 int sample_skip_counter = 1;
 
-TfLiteStatus SetupAccelerometer(tflite::ErrorReporter* error_reporter) {
+TfLiteStatus SetupAccelerometer() {
   // Switch on the IMU
   if (!IMU.begin()) {
-    TF_LITE_REPORT_ERROR(error_reporter, "Failed to initialize IMU");
+    MicroPrintf("Failed to initialize IMU");
     return kTfLiteError;
   }
 
@@ -54,13 +55,12 @@ TfLiteStatus SetupAccelerometer(tflite::ErrorReporter* error_reporter) {
   float sample_rate = IMU.accelerationSampleRate();
   sample_every_n = static_cast<int>(roundf(sample_rate / kTargetHz));
 
-  TF_LITE_REPORT_ERROR(error_reporter, "Magic starts!");
+  MicroPrintf("Magic starts!");
 
   return kTfLiteOk;
 }
 
-bool ReadAccelerometer(tflite::ErrorReporter* error_reporter, float* input,
-                       int length) {
+bool ReadAccelerometer(float* input, int length) {
   static uint8_t is_first = 1;
   static uint32_t data_count = 0;
   (void) data_count;
@@ -72,7 +72,7 @@ bool ReadAccelerometer(tflite::ErrorReporter* error_reporter, float* input,
     float x, y, z;
     // Read each sample, removing it from the device's FIFO buffer
     if (!IMU.readAcceleration(x, y, z)) {
-      TF_LITE_REPORT_ERROR(error_reporter, "Failed to read data");
+      MicroPrintf("Failed to read data");
       break;
     }
     // Throw away this sample unless it's the nth

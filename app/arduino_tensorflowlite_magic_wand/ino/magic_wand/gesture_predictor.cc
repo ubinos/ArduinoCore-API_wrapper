@@ -13,11 +13,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "gesture_predictor.h"
+#include <stdio.h>
 
 #include "constants.h"
+#include "gesture_predictor.h"
 
-#include <stdio.h>
+#include "tensorflow/lite/micro/micro_log.h"
 
 namespace {
 // State for the averaging algorithm we're using.
